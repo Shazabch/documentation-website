@@ -3,7 +3,7 @@ import { Code, Heading, Text, VStack } from "@chakra-ui/react";
 
 const QR_Code_Verification_Invalid = () => {
   return (
-    <VStack textAlign="left">
+    <VStack textAlign="left" py="4">
       <Heading fontSize="24" w="full">
         QR Code Verification (Invalid)
       </Heading>

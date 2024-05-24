@@ -1,7 +1,9 @@
 import React from "react";
-import { Code, Text, VStack } from "@chakra-ui/react";
+import { Code, Text, VStack, useColorMode } from "@chakra-ui/react";
 
 const Example = () => {
+  const { colorMode } = useColorMode();
+
   const jsonCode = `{
      "DateIssued": "16 March 2022",
  "Issuer": "PSA",
@@ -21,7 +23,13 @@ const Example = () => {
   }`;
   return (
     <VStack w="full" borderRadius="md" textAlign="left" gap="0">
-      <Code p="2" w="full" h="full" bg="gray.700">
+      <Code
+        p="2"
+        w="full"
+        h="full"
+        bg="gray.700"
+        color={colorMode === "light" ? "white" : "inherit"}
+      >
         Request Body:
         <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
           <code>{jsonCode}</code>

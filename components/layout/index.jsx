@@ -12,10 +12,11 @@ import Navbar from "./navbar";
 import { Element, scroller } from "react-scroll";
 import MobileNavbar from "./navbar/MobileNavbar";
 import ComponentMapping from "../data/content";
+import { useStateManagementStore } from "../zustand-store/state-management";
 
 const Layout = () => {
   const sectionRefs = useRef({});
-  const { menu, setShowMenu } = useState("");
+  const { setShowMenu } = useStateManagementStore;
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   const scrollToSection = (section) => {
@@ -34,7 +35,7 @@ const Layout = () => {
   // }, []);
 
   return (
-    <div border="2px solid red">
+    <Box>
       {isDesktop ? (
         <Grid templateColumns="15% 85%">
           <GridItem w="full" borderRight="0.8px solid #2B3039">
@@ -49,7 +50,7 @@ const Layout = () => {
               return (
                 <Element name={key} key={key} ref={sectionRefs.current[key]}>
                   <Grid
-                    py="20"
+                    py={{ base: 4, xl: 20 }}
                     templateColumns="1fr"
                     gap="16"
                     pl="16"
@@ -73,11 +74,12 @@ const Layout = () => {
               <Element name={key} key={key} ref={sectionRefs.current[key]}>
                 <Grid
                   onClick={() => setShowMenu(false)}
-                  py="20"
+                  py="12"
                   templateColumns="1fr"
                   gap="16"
                   px="4"
                   display="flex"
+                  borderBottom="0.8px solid #2B3039"
                 >
                   <Component />
                 </Grid>
@@ -86,7 +88,7 @@ const Layout = () => {
           })}
         </>
       )}
-    </div>
+    </Box>
   );
 };
 

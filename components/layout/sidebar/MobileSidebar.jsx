@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Text, Box, Button, VStack } from "@chakra-ui/react";
+import { Text, Box, Button, VStack, useColorMode } from "@chakra-ui/react";
 import SIDEBAR_DATA from "@/components/data/Sidebar";
 import { useStateManagementStore } from "../../zustand-store/state-management";
 import { useRouter } from "next/navigation";
+import ComponentMapping from "@/components/data/content";
 
 const MobileSidebar = ({ scrollToSection }) => {
   const router = useRouter();
+  const { colorMode } = useColorMode();
+  const Sidebar_Titles = Object.keys(ComponentMapping).map(
+    (key) => ComponentMapping[key].name
+  );
 
-  const {
-    showMenu,
-    selectedMenu,
-    setShowMenu,
-    setSelectedMenu,
-    setCurrentRoute,
-    currentRoute,
-  } = useStateManagementStore();
-  const handleRouteURL = (heading, topic) => {
+  const { selectedMenu, setShowMenu, setSelectedMenu, setCurrentRoute } =
+    useStateManagementStore();
+  const handleRouteURL = (heading) => {
     const formattedHeading = heading.replace(/ /g, "_").toLowerCase();
-    const formattedTopic = topic.replace(/ /g, "_").toLowerCase();
-    setCurrentRoute(localStorage.setItem("route", formattedTopic));
-    router.push(`/${formattedHeading}/${formattedTopic}`, undefined, {
+    setCurrentRoute(localStorage.setItem("route", formattedHeading));
+    router.push(`/${formattedHeading}`, undefined, {
       shallow: true,
     });
     setShowMenu(false);
@@ -30,52 +28,34 @@ const MobileSidebar = ({ scrollToSection }) => {
 
   return (
     <Box
-      h="100dvh"
       overflowY="scroll"
       pos="fixed"
       top="14"
       bgColor="#1a202c"
-      px="4"
+      px="8"
       zIndex="1"
     >
       <>
-        {SIDEBAR_DATA.map((section, index) => (
-          <Box order="none" key={index}>
-            <Text
-              fontSize="16"
-              fontWeight="700"
-              _hover={{
-                color: "gray.900",
-              }}
-              flex="1"
-              textAlign="left"
-            >
-              {section.heading}
-            </Text>
-            <Box pb={4}>
-              <Text as="ul">
-                {section.topics.map((topic, topicIndex) => (
-                  <Text
-                    onClick={() => {
-                      handleRouteURL(section.heading, topic);
-                      setSelectedMenu(topic);
-                    }}
-                    py="1"
-                    fontSize="14"
-                    fontWeight="300"
-                    cursor="pointer"
-                    bg={topic == selectedMenu && "purple.100"}
-                    color={topic == selectedMenu && "blue.700"}
-                    rounded="md"
-                    as="li"
-                    key={topicIndex}
-                  >
-                    {topic}
-                  </Text>
-                ))}
-              </Text>
-            </Box>
-          </Box>
+        {Sidebar_Titles.map((title, index) => (
+          <Text
+            pl="4"
+            onClick={() => {
+              handleRouteURL(title);
+              setSelectedMenu(title);
+            }}
+            py="1"
+            cursor="pointer"
+            _hover={{
+              bg: "purple.100",
+              color: "blue.700",
+            }}
+            bg={title == selectedMenu && "purple.100"}
+            rounded="md"
+            key={index}
+            color={colorMode === "light" ? "white" : "inherit"}
+          >
+            {title}
+          </Text>
         ))}
       </>
     </Box>

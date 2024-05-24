@@ -18,7 +18,6 @@ const Endpoints = ({ ref }) => {
         <>
           <GridItem w="100%">
             <Textt />
-            <Example />
           </GridItem>
         </>
       )}

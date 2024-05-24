@@ -18,7 +18,6 @@ const Authentication = ({ ref }) => {
         <>
           <GridItem w="100%">
             <Textt />
-            <Example />
           </GridItem>
         </>
       )}

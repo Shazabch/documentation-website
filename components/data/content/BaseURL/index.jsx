@@ -18,7 +18,6 @@ const BaseURL = () => {
         <>
           <GridItem w="100%">
             <Textt />
-            <Example />
           </GridItem>
         </>
       )}

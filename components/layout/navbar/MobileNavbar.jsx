@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, IconButton } from "@chakra-ui/react";
+import { Box, Button, IconButton, useColorMode } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import MobileSidebar from "../sidebar/MobileSidebar";
@@ -7,10 +7,8 @@ import { useStateManagementStore } from "../../zustand-store/state-management";
 import { scroller } from "react-scroll";
 
 const MobileNavbar = () => {
-  // const { showMenu, setShowMenu, selectedMenu } = useStateManagementStore();
-  const showMenu = "";
-  const setShowMenu = "";
-  const selectedMenu = "";
+  const { showMenu, setShowMenu, selectedMenu } = useStateManagementStore();
+  const { colorMode } = useColorMode();
 
   const scrollToSection = (section) => {
     scroller.scrollTo(section, {
@@ -39,6 +37,7 @@ const MobileNavbar = () => {
             bgColor: "transparent",
           }}
           onClick={() => setShowMenu(!showMenu)}
+          color={colorMode === "light" ? "white" : "inherit"}
         >
           {selectedMenu ? selectedMenu : "Introduction"}
           <IconButton
