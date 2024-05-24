@@ -17,18 +17,23 @@ import { IoIosArrowDown } from "react-icons/io";
 import SIDEBAR_DATA from "@/components/data/Sidebar";
 import Header from "./Header";
 import { useStateManagementStore } from "@/components/zustand-store/state-management";
-
+import ComponentMapping from "@/components/data/content";
 const Sidebar = ({ scrollToSection }) => {
   const router = useRouter();
   const { selectedMenu, setSelectedMenu, setCurrentRoute, currentRoute } =
     useStateManagementStore();
   const [showScrollbar, setShowScrollbar] = useState(false);
 
-  const handleRouteURL = (heading, topic) => {
+  const Sidebar_Titles = Object.keys(ComponentMapping).map(
+    (key) => ComponentMapping[key].name
+  );
+
+  console.log(Sidebar_Titles);
+
+  const handleRouteURL = (heading) => {
     const formattedHeading = heading.replace(/ /g, "_").toLowerCase();
-    const formattedTopic = topic.replace(/ /g, "_").toLowerCase();
-    setCurrentRoute(localStorage.setItem("route", formattedTopic));
-    router.push(`/${formattedHeading}/${formattedTopic}`, undefined, {
+    setCurrentRoute(localStorage.setItem("route", formattedHeading));
+    router.push(`/${formattedHeading}/`, undefined, {
       shallow: true,
     });
   };
@@ -70,42 +75,26 @@ const Sidebar = ({ scrollToSection }) => {
               }
         }
       >
-        {SIDEBAR_DATA.map((section, index) => (
-          <AccordionItem w="full" border="none" key={index}>
-            <AccordionButton w="full" justifyContent="space-between">
-              <Text
-                fontWeight="600"
-                flex="1"
-                textAlign="left"
-                mr="4"
-                fontSize="14"
-              >
-                {section.heading}
-              </Text>
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <Text as="ul" pl="4" fontSize="14">
-                {section.topics.map((topic, topicIndex) => (
-                  <Text
-                    onClick={() => {
-                      handleRouteURL(section.heading, topic);
-                      setSelectedMenu(topic);
-                    }}
-                    py="1"
-                    cursor="pointer"
-                    bg={topic == selectedMenu && "purple.100"}
-                    color={topic == selectedMenu && "blue.700"}
-                    rounded="md"
-                    as="li"
-                    key={topicIndex}
-                  >
-                    {topic}
-                  </Text>
-                ))}
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
+        {Sidebar_Titles.map((title, index) => (
+          <Text
+            pl="8"
+            onClick={() => {
+              handleRouteURL(title);
+              setSelectedMenu(title);
+            }}
+            py="1"
+            cursor="pointer"
+            _hover={{
+              bg: "purple.100",
+              color: "blue.700",
+            }}
+            bg={title == selectedMenu && "purple.100"}
+            color={title == selectedMenu && "blue.700"}
+            rounded="md"
+            key={index}
+          >
+            {title}
+          </Text>
         ))}
         <Button
           w="full"
@@ -139,3 +128,42 @@ const Sidebar = ({ scrollToSection }) => {
 };
 
 export default Sidebar;
+
+{
+  /* {Sidebar_Titles.map((section, index) => (
+          <AccordionItem w="full" border="none" px="4" key={index}>
+            <AccordionButton w="full" justifyContent="space-between">
+              <Text
+                fontWeight="600"
+                flex="1"
+                textAlign="left"
+                mr="4"
+                fontSize="14"
+              >
+                {section.heading}
+              </Text>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel pb={4}>
+              <Text pl="4" fontSize="14">
+                {section.topics.map((topic, topicIndex) => (
+                  <Text
+                    onClick={() => {
+                      handleRouteURL(section.heading, topic);
+                      setSelectedMenu(topic);
+                    }}
+                    py="1"
+                    cursor="pointer"
+                    bg={topic == selectedMenu && "purple.100"}
+                    color={topic == selectedMenu && "blue.700"}
+                    rounded="md"
+                    key={topicIndex}
+                  >
+                    {topic}
+                  </Text>
+                ))}
+              </Text>
+            </AccordionPanel>
+          </AccordionItem>
+        ))} */
+}

@@ -2,7 +2,7 @@ import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
 import Example from "./Example";
-const Authentication = ({ ref }) => {
+const QR_Code_Verification_Invalid = ({ ref }) => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -12,7 +12,9 @@ const Authentication = ({ ref }) => {
           <GridItem w="50%">
             <Textt />
           </GridItem>
-          <GridItem w="50%"></GridItem>
+          <GridItem w="50%" bg="red">
+            <Example />
+          </GridItem>
         </>
       ) : (
         <>
@@ -26,4 +28,4 @@ const Authentication = ({ ref }) => {
   );
 };
 
-export default Authentication;
+export default QR_Code_Verification_Invalid;

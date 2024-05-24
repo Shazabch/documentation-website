@@ -2,7 +2,7 @@ import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
 import Example from "./Example";
-const Authentication = ({ ref }) => {
+const BaseURL = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -26,4 +26,4 @@ const Authentication = ({ ref }) => {
   );
 };
 
-export default Authentication;
+export default BaseURL;

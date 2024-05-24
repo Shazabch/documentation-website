@@ -2,7 +2,7 @@ import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
 import Example from "./Example";
-const ExpandingRequests = ({ ref }) => {
+const Events = ({ ref }) => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -28,4 +28,4 @@ const ExpandingRequests = ({ ref }) => {
   );
 };
 
-export default ExpandingRequests;
+export default Events;

@@ -9,33 +9,14 @@ import {
 } from "@chakra-ui/react";
 import Sidebar from "./sidebar";
 import Navbar from "./navbar";
-import Introduction from "../data/content/Introduction";
-import Authentication from "../data/content/Authentication";
-import ConnectedAccounts from "../data/content/ConnectedAccounts";
-import Errors from "../data/content/Errors";
 import { Element, scroller } from "react-scroll";
-import ExpandingRequests from "../data/content/Expanding Responses";
-import Metadata from "../data/content/Metadata";
-import IdempotentRequests from "../data/content/Idempotent Requests";
-import MobileSidebar from "./sidebar/MobileSidebar";
 import MobileNavbar from "./navbar/MobileNavbar";
-import { useStateManagementStore } from "../zustand-store/state-management";
+import ComponentMapping from "../data/content";
 
 const Layout = () => {
   const sectionRefs = useRef({});
   const { menu, setShowMenu } = useState("");
-  console.log(sectionRefs);
   const isDesktop = useBreakpointValue({ base: false, md: true });
-
-  const componentMapping = {
-    introduction: Introduction,
-    authentication: Authentication,
-    connected_accounts: ConnectedAccounts,
-    errors: Errors,
-    expanding_requests: ExpandingRequests,
-    metadata: Metadata,
-    idempotent_requests: IdempotentRequests,
-  };
 
   const scrollToSection = (section) => {
     scroller.scrollTo(section, {
@@ -45,15 +26,15 @@ const Layout = () => {
     });
   };
 
-  //map the keys of componentMapping and make a new useRef out of it
+  //map the keys of ComponentMapping and make a new useRef out of it
   // useEffect(() => {
-  //   Object.keys(componentMapping).forEach((key) => {
+  //   Object.keys(ComponentMapping).forEach((key) => {
   //     sectionRefs.current[key] = React.createRef();
   //   });
   // }, []);
 
   return (
-    <div border="2px solid re">
+    <div border="2px solid red">
       {isDesktop ? (
         <Grid templateColumns="15% 85%">
           <GridItem w="full" borderRight="0.8px solid #2B3039">
@@ -62,8 +43,8 @@ const Layout = () => {
           <GridItem h="full" w="full">
             <Navbar />
             {/* dynamically call the Components */}
-            {Object.keys(componentMapping).map((key) => {
-              const Component = componentMapping[key];
+            {Object.keys(ComponentMapping).map((key) => {
+              const Component = ComponentMapping[key];
               console.log(Component);
               return (
                 <Element name={key} key={key} ref={sectionRefs.current[key]}>
@@ -71,7 +52,7 @@ const Layout = () => {
                     py="20"
                     templateColumns="1fr"
                     gap="16"
-                    px="4"
+                    pl="16"
                     display="flex"
                     zIndex="-1"
                     borderBottom="0.8px solid #2B3039"
@@ -86,8 +67,8 @@ const Layout = () => {
       ) : (
         <>
           <MobileNavbar />
-          {Object.keys(componentMapping).map((key) => {
-            const Component = componentMapping[key];
+          {Object.keys(ComponentMapping).map((key) => {
+            const Component = ComponentMapping[key];
             return (
               <Element name={key} key={key} ref={sectionRefs.current[key]}>
                 <Grid

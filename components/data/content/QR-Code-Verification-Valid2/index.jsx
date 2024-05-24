@@ -1,8 +1,9 @@
-import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
 import Example from "./Example";
-const Errors = ({ ref }) => {
+import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
+
+const QR_Code_Verification_Valid2 = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -28,4 +29,4 @@ const Errors = ({ ref }) => {
   );
 };
 
-export default Errors;
+export default QR_Code_Verification_Valid2;

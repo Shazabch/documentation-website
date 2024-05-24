@@ -2,7 +2,7 @@ import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
 import Example from "./Example";
-const Metadata = ({ ref }) => {
+const Endpoints = ({ ref }) => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -12,9 +12,7 @@ const Metadata = ({ ref }) => {
           <GridItem w="50%">
             <Textt />
           </GridItem>
-          <GridItem w="50%">
-            <Example />
-          </GridItem>
+          <GridItem w="50%"></GridItem>
         </>
       ) : (
         <>
@@ -28,4 +26,4 @@ const Metadata = ({ ref }) => {
   );
 };
 
-export default Metadata;
+export default Endpoints;

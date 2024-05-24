@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import {
-  Text,
   HStack,
   Switch,
   VStack,
@@ -11,22 +10,20 @@ import {
   Input,
   Code,
   useColorMode,
-  Button,
-  Box,
   IconButton,
 } from "@chakra-ui/react";
 import { CiSearch } from "react-icons/ci";
-// import LogoLightMode from "../../../assets/logo_lightmode";
-// import LogoDarkMode from "../../../assets/logo_darkmode";
+import LogoLightMode from "@/public/assets/logo_lightmode";
+import LogoDarkMode from "@/public/assets/logo_darkmode";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <VStack p="4" position="fixed" top="0" zIndex="1">
+    <VStack py="4" position="fixed" top="0" zIndex="1">
       <HStack w="full" justifyContent="space-between">
         <IconButton
           bgColor="transparent"
-          // icon={colorMode === "dark" ? <LogoDarkMode /> : <LogoLightMode />}
+          icon={colorMode === "dark" ? <LogoDarkMode /> : <LogoLightMode />}
           aria-label="logo"
         />
 
