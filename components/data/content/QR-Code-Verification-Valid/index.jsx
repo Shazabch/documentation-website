@@ -9,7 +9,7 @@ const QR_Code_Verification_Valid = ({ ref }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="50%">
+          <GridItem w="50%" h="100%" pos="sticky" top="20">
             <Textt />
           </GridItem>
           <GridItem w="50%">

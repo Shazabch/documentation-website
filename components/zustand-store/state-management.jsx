@@ -7,4 +7,7 @@ export const useStateManagementStore = create((set) => ({
   setCurrentRoute: (route) => set(() => ({ currentRoute: route })),
   showMenu: false,
   setShowMenu: (menu) => set(() => ({ showMenu: menu })),
+  sidebarTitles: [],
+  setSidebarTitles: (titles) =>
+    set({ sidebarTitles: Array.isArray(titles) ? titles : [] }),
 }));

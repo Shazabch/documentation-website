@@ -1,7 +1,9 @@
 import Layout from "@/components/layout";
-import { ChakraProvider, Text } from "@chakra-ui/react";
+import { Button, ChakraProvider, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   return (
     <ChakraProvider>
       <Layout>

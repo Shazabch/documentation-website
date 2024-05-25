@@ -59,7 +59,7 @@ const MobileNavbar = () => {
           Sign in
         </Button>
       </Box>
-      {showMenu && <MobileSidebar scrollToSection={scrollToSection} />}
+      {showMenu && <MobileSidebar />}
     </>
   );
 };

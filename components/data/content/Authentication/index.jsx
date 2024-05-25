@@ -2,14 +2,14 @@ import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
 import Example from "./Example";
-const Authentication = ({ ref }) => {
+const Authentication = ({ id }) => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
     <>
       {isDesktop ? (
         <>
-          <GridItem w="50%">
+          <GridItem w="50%" id={id}>
             <Textt />
           </GridItem>
           <GridItem w="50%"></GridItem>

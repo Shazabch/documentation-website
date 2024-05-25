@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   Accordion,
@@ -13,34 +13,12 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
-import SIDEBAR_DATA from "@/components/data/Sidebar";
 import Header from "./Header";
 import { useStateManagementStore } from "@/components/zustand-store/state-management";
-import ComponentMapping from "@/components/data/content";
-const Sidebar = ({ scrollToSection }) => {
-  const router = useRouter();
+const Sidebar = ({ titles, handleClick }) => {
   const { selectedMenu, setSelectedMenu, setCurrentRoute, currentRoute } =
     useStateManagementStore();
   const [showScrollbar, setShowScrollbar] = useState(false);
-
-  const Sidebar_Titles = Object.keys(ComponentMapping).map(
-    (key) => ComponentMapping[key].name
-  );
-
-  console.log(Sidebar_Titles);
-
-  const handleRouteURL = (heading) => {
-    const formattedHeading = heading.replace(/ /g, "_").toLowerCase();
-    setCurrentRoute(localStorage.setItem("route", formattedHeading));
-    router.push(`/${formattedHeading}/`, undefined, {
-      shallow: true,
-    });
-  };
-
-  setTimeout(() => {
-    scrollToSection(localStorage.getItem("route"));
-  }, 100);
 
   return (
     <VStack h="100dvh" w="15%" top="0" pos="fixed">
@@ -75,12 +53,14 @@ const Sidebar = ({ scrollToSection }) => {
               }
         }
       >
-        {Sidebar_Titles.map((title, index) => (
+        {titles.map((title, index) => (
           <Text
+            key={index}
             pl="8"
             onClick={() => {
-              handleRouteURL(title);
+              handleClick(title);
               setSelectedMenu(title);
+              setCurrentRoute(localStorage.setItem("route", title));
             }}
             py="1"
             cursor="pointer"
@@ -91,7 +71,6 @@ const Sidebar = ({ scrollToSection }) => {
             bg={title == selectedMenu && "purple.100"}
             color={title == selectedMenu && "blue.700"}
             rounded="md"
-            key={index}
           >
             {title}
           </Text>

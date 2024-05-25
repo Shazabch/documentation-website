@@ -1,6 +1,6 @@
 import React from "react";
 import Textt from "./Textt";
-import Example from "./Example";
+import Example from "./example";
 import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 
 const QR_Code_Verification_Valid2 = () => {
@@ -10,7 +10,7 @@ const QR_Code_Verification_Valid2 = () => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="50%">
+          <GridItem w="50%" h="100%" pos="sticky" top="20">
             <Textt />
           </GridItem>
           <GridItem w="50%">
