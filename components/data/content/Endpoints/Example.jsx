@@ -1,5 +1,5 @@
 import React from "react";
-import { Code, Text, VStack } from "@chakra-ui/react";
+import { Code, VStack } from "@chakra-ui/react";
 
 const Example = () => {
   return (

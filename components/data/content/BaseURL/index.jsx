@@ -1,7 +1,6 @@
 import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
-import Example from "./Example";
 const BaseURL = ({ id }) => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 

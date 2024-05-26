@@ -1,22 +1,23 @@
 "use client";
 import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { Box, Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
-import Sidebar from "./sidebar";
-import Navbar from "./navbar";
 import { scroller } from "react-scroll";
 import MobileNavbar from "./navbar/MobileNavbar";
 import ComponentMapping from "../data/content";
 import { useStateManagementStore } from "../zustand-store/state-management";
-import { useRouter } from "next/router";
+import Sidebar from "./sidebar";
+import Navbar from "./navbar";
 
 const Layout = () => {
   const router = useRouter();
-  const { setShowMenu, setSidebarTitles } = useStateManagementStore;
+  const { setShowMenu } = useStateManagementStore;
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   const sidebarTitles = Object.keys(ComponentMapping).map(
     (key) => ComponentMapping[key].name
   );
+
   const scrollToSection = (section) => {
     scroller.scrollTo(section, {
       duration: 800,
@@ -25,18 +26,19 @@ const Layout = () => {
     });
   };
 
-  useEffect(() => {
-    const id = router.asPath.split("/");
-    if (id) {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [router.asPath]);
-
   const handleNavigation = (id) => {
-    router.push(`#${id}`, undefined, { shallow: true });
+    router.push(`#${id.toLowerCase()}`, undefined, { shallow: true });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    scrollToSection(id);
   };
+
+  // scrollToSection(id);
+
+  // useEffect(() => {
+  //   const id = router.asPath.split("/");
+  //   if (id) {
+  //     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // }, [router.asPath]);
 
   return (
     <Box>

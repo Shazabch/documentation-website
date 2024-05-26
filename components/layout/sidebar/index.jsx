@@ -16,9 +16,9 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import Header from "./Header";
 import { useStateManagementStore } from "@/components/zustand-store/state-management";
 const Sidebar = ({ titles, handleClick }) => {
-  const { selectedMenu, setSelectedMenu, setCurrentRoute, currentRoute } =
-    useStateManagementStore();
   const [showScrollbar, setShowScrollbar] = useState(false);
+  const { selectedMenu, setSelectedMenu, setCurrentRoute } =
+    useStateManagementStore();
 
   return (
     <VStack h="100dvh" w="15%" top="0" pos="fixed">
@@ -107,42 +107,3 @@ const Sidebar = ({ titles, handleClick }) => {
 };
 
 export default Sidebar;
-
-{
-  /* {Sidebar_Titles.map((section, index) => (
-          <AccordionItem w="full" border="none" px="4" key={index}>
-            <AccordionButton w="full" justifyContent="space-between">
-              <Text
-                fontWeight="600"
-                flex="1"
-                textAlign="left"
-                mr="4"
-                fontSize="14"
-              >
-                {section.heading}
-              </Text>
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <Text pl="4" fontSize="14">
-                {section.topics.map((topic, topicIndex) => (
-                  <Text
-                    onClick={() => {
-                      handleRouteURL(section.heading, topic);
-                      setSelectedMenu(topic);
-                    }}
-                    py="1"
-                    cursor="pointer"
-                    bg={topic == selectedMenu && "purple.100"}
-                    color={topic == selectedMenu && "blue.700"}
-                    rounded="md"
-                    key={topicIndex}
-                  >
-                    {topic}
-                  </Text>
-                ))}
-              </Text>
-            </AccordionPanel>
-          </AccordionItem>
-        ))} */
-}

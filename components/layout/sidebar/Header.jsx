@@ -9,15 +9,25 @@ import {
   InputRightElement,
   Input,
   Code,
-  useColorMode,
   IconButton,
+  useColorModeValue,
+  Box,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { CiSearch } from "react-icons/ci";
+import { BsSunFill, BsFillMoonFill } from "react-icons/bs";
+import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import LogoLightMode from "@/public/assets/logo_lightmode";
 import LogoDarkMode from "@/public/assets/logo_darkmode";
+import { useColorMode, useTheme } from "@chakra-ui/react";
+import SearchModal from "@/components/common/search_bar";
+import { useStateManagementStore } from "@/components/zustand-store/state-management";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { isOpenSearchModal, onOpenSearchModal, onCloseSearchModal } =
+    useStateManagementStore();
+
   return (
     <VStack py="4" position="fixed" top="0" zIndex="1">
       <HStack w="full" justifyContent="space-between">
@@ -29,6 +39,7 @@ const Header = () => {
 
         <Switch
           id="color-mode-switch"
+          colorScheme={colorMode == "dark" && "purple"}
           isChecked={colorMode === "dark"}
           onChange={toggleColorMode}
           size="sm"
@@ -51,11 +62,14 @@ const Header = () => {
           fontSize="12"
           border="1px solid gray"
           placeholder="Find anything"
+          onClick={onOpenSearchModal}
         />
         <InputRightElement pb="2">
           <Code fontSize="10">/</Code>
         </InputRightElement>
       </InputGroup>
+
+      {isOpenSearchModal && <SearchModal />}
     </VStack>
   );
 };
