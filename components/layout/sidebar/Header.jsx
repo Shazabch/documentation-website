@@ -29,8 +29,20 @@ const Header = () => {
     useStateManagementStore();
 
   return (
-    <VStack py="4" position="fixed" top="0" zIndex="1">
-      <HStack w="full" justifyContent="space-between">
+    <VStack
+      w={{ lg: "25%", xl: "20%", "2xl": 60, "3xl": "80" }}
+      border={{
+        lg: "2px solid red",
+        xl: "2px solid pink",
+        "2xl": "2px solid green",
+        "3xl": "2px solid purple",
+      }}
+      py="4"
+      position="fixed"
+      top="0"
+      zIndex="1"
+    >
+      <HStack w="100%" justifyContent="space-between">
         <IconButton
           bgColor="transparent"
           icon={colorMode === "dark" ? <LogoDarkMode /> : <LogoLightMode />}

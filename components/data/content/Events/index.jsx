@@ -9,10 +9,10 @@ const Events = ({ ref }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="50%">
+          <GridItem w="45%">
             <Textt />
           </GridItem>
-          <GridItem w="50%">
+          <GridItem w="45%">
             <Example />
           </GridItem>
         </>

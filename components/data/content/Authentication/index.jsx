@@ -8,10 +8,10 @@ const Authentication = ({ id }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="50%" id={id}>
+          <GridItem id={id}>
             <Textt />
           </GridItem>
-          <GridItem w="50%"></GridItem>
+          <GridItem ></GridItem>
         </>
       ) : (
         <>

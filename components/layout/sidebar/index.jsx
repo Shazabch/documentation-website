@@ -21,7 +21,12 @@ const Sidebar = ({ titles, handleClick }) => {
     useStateManagementStore();
 
   return (
-    <VStack h="100dvh" w="15%" top="0" pos="fixed">
+    <VStack
+      h="100dvh"
+      w={{ lg: "25%", xl: "20%", "2xl": "15%" }}
+      top="0"
+      pos="fixed"
+    >
       <Header />
       <Accordion
         py="4"

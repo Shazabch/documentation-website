@@ -12,7 +12,7 @@ const Endpoints = ({ id }) => {
           <GridItem w="50%" id={id}>
             <Textt />
           </GridItem>
-          <GridItem w="50%"></GridItem>
+          <GridItem w="45%"></GridItem>
         </>
       ) : (
         <>

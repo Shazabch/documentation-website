@@ -9,10 +9,10 @@ const Overview = ({ ref }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="50%">
+          <GridItem w="45%">
             <Textt />
           </GridItem>
-          <GridItem w="50%"></GridItem>
+          <GridItem w="45%"></GridItem>
         </>
       ) : (
         <>
