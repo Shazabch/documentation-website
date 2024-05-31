@@ -9,10 +9,10 @@ const Variables = () => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="50%" h="100%" pos="sticky" top="20">
+          <GridItem w="100%" h="100%" pos="sticky" top="20">
             <Textt />
           </GridItem>
-          <GridItem w="45%">
+          <GridItem w="100%">
             <Example />
           </GridItem>
         </>

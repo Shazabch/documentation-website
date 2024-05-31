@@ -41,10 +41,10 @@ const MobileSidebar = () => {
             py="1"
             cursor="pointer"
             _hover={{
-              bg: "purple.100",
-              color: "blue.700",
+              bg: "blue.100",
+              color: "blue.500",
             }}
-            bg={title == selectedMenu && "purple.100"}
+            bg={title == selectedMenu && "blue.500"}
             rounded="md"
             key={index}
             color={colorMode === "light" ? "white" : "inherit"}

@@ -52,16 +52,6 @@ const MobileNavbar = () => {
             icon={<IoIosArrowDown size={12} />}
           />
         </Button>
-
-        <Button bgColor="transparent" color="blue.500">
-          <IconButton
-            bgColor="transparent"
-            aria-label="mobile-searchIcon"
-            icon={<CiSearch size={20} />}
-            onClick={onOpenSearchModal}
-          />
-          Sign in
-        </Button>
       </Box>
       {showMenu && <MobileSidebar />}
       {isOpenSearchModal && <SearchModal />}

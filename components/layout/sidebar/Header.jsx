@@ -44,6 +44,7 @@ const Header = () => {
     >
       <HStack w="100%" justifyContent="space-between">
         <IconButton
+          pl="8"
           bgColor="transparent"
           icon={colorMode === "dark" ? <LogoDarkMode /> : <LogoLightMode />}
           aria-label="logo"

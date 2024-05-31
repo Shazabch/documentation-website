@@ -69,7 +69,7 @@ const SearchModal = ({}) => {
     <>
       <Modal
         borderRadius="xl"
-        border="2px solid red"
+        // border="2px solid red"
         isOpen={isOpenSearchModal}
         onClose={onCloseSearchModal}
       >
@@ -98,8 +98,8 @@ const SearchModal = ({}) => {
                 cursor="pointer"
                 color="gray.300"
                 _hover={{
-                  bg: "purple.100",
-                  color: "blue.700",
+                  bg: "blue.100",
+                  color: "blue.500",
                 }}
                 w="full"
                 key={index}

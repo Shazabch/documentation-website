@@ -1,8 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import { Box, Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
-import { scroller } from "react-scroll";
 import MobileNavbar from "./navbar/MobileNavbar";
 import ComponentMapping from "../data/content";
 import { useStateManagementStore } from "../zustand-store/state-management";
@@ -14,26 +13,28 @@ const Layout = () => {
   const { setShowMenu } = useStateManagementStore;
   const isDesktop = useBreakpointValue({ base: false, lg: true });
 
+  //take the component names from ComponentMapping and removes "_"
+  // const sidebarTitles = Object.keys(ComponentMapping).map((key) =>
+  //   ComponentMapping[key].name.replace(/_/g, " ")
+  // );
   const sidebarTitles = Object.keys(ComponentMapping).map(
     (key) => ComponentMapping[key].name
   );
 
   const handleNavigation = (id) => {
-    router.push(`#${id.toLowerCase()}`, undefined, { shallow: true });
+    router.push(`#/api1/${id.toLowerCase()}`, undefined, { shallow: true });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   // scrollToSection(id);
-
   // useEffect(() => {
   //   const id = router.asPath.split("/");
   //   if (id) {
   //     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   //   }
   // }, [router.asPath]);
-
   return (
-    <Box>
+    <Box bgGradient="linear(to-t,#3641BA 10%, #121539 100%) ">
       {isDesktop ? (
         <Grid
           templateColumns={{
@@ -44,24 +45,26 @@ const Layout = () => {
           }}
         >
           <GridItem
-            border="5px solid red"
+            // border="5px solid red"
             w="full"
             borderRight="0.8px solid #2B3039"
           >
             <Sidebar titles={sidebarTitles} handleClick={handleNavigation} />
           </GridItem>
-          <GridItem h="full" w="full" border="5px solid orange">
+          <GridItem h="full" w="full" border="5px solid red">
             <Navbar />
 
             {Object.keys(ComponentMapping).map((key) => {
               const Component = ComponentMapping[key];
               return (
                 <Grid
+                  w="100%"
+                  border="5px solid red"
                   key={Component.name}
                   id={Component.name}
                   py={{ base: 4, xl: 20 }}
                   gap={{ lg: 8, xl: "", "2xl": "" }}
-                  px={{ lg: 10, xl: "", "2xl": "80" }}
+                  px={{ lg: 10, xl: "", "2xl": "20", "3xl": "80" }}
                   display="flex"
                   zIndex="-1"
                   borderBottom="0.8px solid #2B3039"

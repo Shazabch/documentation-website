@@ -11,14 +11,19 @@ const QR_Code_Verification_Invalid = ({ ref }) => {
         <>
           <GridItem
             border="2px solid red"
-            w="50%"
+            // w="100%"
+            w="40vw"
             h="100%"
             pos="sticky"
             top="20"
           >
             <Textt />
           </GridItem>
-          <GridItem w="45%" border="2px solid red">
+          <GridItem
+            //  w="100%"
+            w="40vw"
+            border="2px solid pink"
+          >
             <Example />
           </GridItem>
         </>
