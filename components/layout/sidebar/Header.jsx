@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { CiSearch } from "react-icons/ci";
 import { BsSunFill, BsFillMoonFill } from "react-icons/bs";
-import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import LogoLightMode from "@/public/assets/logo_lightmode";
 import LogoDarkMode from "@/public/assets/logo_darkmode";
 import { useColorMode, useTheme } from "@chakra-ui/react";
