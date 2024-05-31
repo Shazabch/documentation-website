@@ -50,6 +50,7 @@ const Header = () => {
         />
 
         <Switch
+          pr={{ xl: "2" }}
           id="color-mode-switch"
           colorScheme={colorMode == "dark" && "purple"}
           isChecked={colorMode === "dark"}
