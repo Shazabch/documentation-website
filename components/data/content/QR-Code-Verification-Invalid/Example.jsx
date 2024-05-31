@@ -1,5 +1,14 @@
+import {
+  Box,
+  IconButton,
+  VStack,
+  useClipboard,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { MdDone, MdOutlineCopyAll } from "react-icons/md";
 
 const Example = () => {
   const jsonCode = `{
@@ -20,11 +29,27 @@ const Example = () => {
     "signature":
       "lq3F1234kLI70mZG2/9WvQSUZi0EGS08AH9nKLMANRaXscYTmfPm7OYaP0qrTRPlnkGY7RlDCtV+krBj1xshAg==",
   }`;
+  const { onCopy, hasCopied } = useClipboard(JSON.stringify(jsonCode, null, 2));
+  const [showTransition, setShowTransition] = useState(false);
 
+  useEffect(() => {
+    setShowTransition(hasCopied);
+  }, [hasCopied]);
   return (
-    <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
-      {jsonCode}
-    </SyntaxHighlighter>
+    <VStack pos="relative" w="full">
+      <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
+        {jsonCode}
+      </SyntaxHighlighter>
+      <Box pos="absolute" top="4" right="-4">
+        <IconButton
+          onClick={onCopy}
+          aria-label={hasCopied ? "Copied" : "Copy"}
+          icon={hasCopied ? <MdDone /> : <MdOutlineCopyAll />}
+          bgColor="transparent"
+          transition={showTransition ? "all 0.5s ease" : "none"}
+        />
+      </Box>
+    </VStack>
   );
 };
 

@@ -1,7 +1,13 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/router";
-import { Box, Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  Grid,
+  GridItem,
+  useBreakpointValue,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import MobileNavbar from "./navbar/MobileNavbar";
 import ComponentMapping from "../data/content";
 import { useStateManagementStore } from "../zustand-store/state-management";
@@ -34,7 +40,11 @@ const Layout = () => {
   //   }
   // }, [router.asPath]);
   return (
-    <Box bgGradient="linear(to-t, #121539 10%, #121539 100%) ">
+    <Box
+      // bgGradient="linear(to-t, #121539 10%, #121539 100%) "
+      bgColor={useColorModeValue("white", "#121539")}
+      // color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
+    >
       {isDesktop ? (
         <Grid
           templateColumns={{
@@ -44,11 +54,7 @@ const Layout = () => {
             "3xl": "20% 80%",
           }}
         >
-          <GridItem
-            // border="5px solid red"
-            w="full"
-            borderRight="0.8px solid #2B3039"
-          >
+          <GridItem w="full" borderRight="0.8px solid #2B3039">
             <Sidebar titles={sidebarTitles} handleClick={handleNavigation} />
           </GridItem>
           <GridItem h="full" w="full">

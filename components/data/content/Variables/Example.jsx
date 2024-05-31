@@ -40,9 +40,20 @@ const Example = () => {
   }, [hasCopied]);
 
   return (
-    <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
-      {jsonCode}
-    </SyntaxHighlighter>
+    <VStack pos="relative" w="full">
+      <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
+        {jsonCode}
+      </SyntaxHighlighter>
+      <Box pos="absolute" top="4" right="2">
+        <IconButton
+          onClick={onCopy}
+          aria-label={hasCopied ? "Copied" : "Copy"}
+          icon={hasCopied ? <MdDone /> : <MdOutlineCopyAll />}
+          bgColor="transparent"
+          transition={showTransition ? "all 0.5s ease" : "none"}
+        />
+      </Box>
+    </VStack>
     // <VStack pos="relative" w="full" borderRadius="md" textAlign="left" gap="0">
     //   <Code p="2" w="full" h="full" bg="gray.700">
     //     Request Body:

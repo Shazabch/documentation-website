@@ -11,6 +11,7 @@ import {
   Button,
   VStack,
   IconButton,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Header from "./Header";
@@ -24,7 +25,8 @@ const Sidebar = ({ titles, handleClick }) => {
       w={{ lg: "25%", xl: "20%", "2xl": "15%" }}
       top="0"
       pos="fixed"
-      // border="2px solid red"
+      bg={useColorModeValue("white", "#121539")}
+      color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
     >
       <Header />
       <Accordion
@@ -58,7 +60,10 @@ const Sidebar = ({ titles, handleClick }) => {
         //       }
         // }
       >
-        <Text color="white" fontWeight="600">
+        <Text
+          color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
+          fontWeight="600"
+        >
           API 1
         </Text>
         {titles.map((title, index) => (
@@ -70,12 +75,18 @@ const Sidebar = ({ titles, handleClick }) => {
             }}
             transition="transform 0.5s ease"
             _hover={{
-              color: "blue.500",
+              color: useColorModeValue("#121539", "rgba(255, 255, 255, 0.92)"),
               transform: "translateX(2%)",
             }}
             py="1"
+            color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
             cursor="pointer"
-            color={title == selectedMenu && "blue.700"}
+            // color={title == selectedMenu && "RGBA(255, 255, 255, 0.92)"}
+            color={
+              title === selectedMenu
+                ? useColorModeValue("#121539", "rgba(255, 255, 255, 0.92)")
+                : undefined
+            }
             rounded="md"
           >
             {title}

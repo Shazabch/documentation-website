@@ -39,9 +39,20 @@ const Example = () => {
     setShowTransition(hasCopied);
   }, [hasCopied]);
   return (
-    <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
-      {jsonCode}
-    </SyntaxHighlighter>
+    <VStack pos="relative" w="full">
+      <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
+        {jsonCode}
+      </SyntaxHighlighter>
+      <Box pos="absolute" top="4" right="2">
+        <IconButton
+          onClick={onCopy}
+          aria-label={hasCopied ? "Copied" : "Copy"}
+          icon={hasCopied ? <MdDone /> : <MdOutlineCopyAll />}
+          bgColor="transparent"
+          transition={showTransition ? "all 0.5s ease" : "none"}
+        />
+      </Box>
+    </VStack>
   );
 };
 

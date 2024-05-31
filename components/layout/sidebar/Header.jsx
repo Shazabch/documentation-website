@@ -64,9 +64,9 @@ const Header = () => {
           display="flex"
           justifyContent="center"
           pointerEvents="none"
-          color="gray.300"
           fontSize="12"
           pb="2"
+          color={useColorModeValue("gray.900", "gray.300")}
         >
           <CiSearch />
         </InputLeftElement>

@@ -26,7 +26,11 @@ const Navbar = () => {
       // bgColor="#1a202c"
     >
       <HStack position="relative" px="12" justifyContent="space-around" gap="3">
-        <Link as={NextLink} href="/">
+        <Link
+          as={NextLink}
+          href="/"
+          color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
+        >
           API Reference
         </Link>
       </HStack>
