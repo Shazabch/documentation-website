@@ -36,11 +36,19 @@ const Example = () => {
     setShowTransition(hasCopied);
   }, [hasCopied]);
   return (
-    <VStack pos="relative" w="full">
-      <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
+    <VStack pos="relative">
+      <SyntaxHighlighter
+        customStyle={{
+          height: "100%",
+          width: "100%",
+        }}
+        language="json"
+        style={okaidia}
+        wrapLongLines
+      >
         {jsonCode}
       </SyntaxHighlighter>
-      <Box pos="absolute" top="4" right="-4">
+      <Box pos="absolute" top="4" right={{ base: "-4", xl: "2", "2xl": "2" }}>
         <IconButton
           onClick={onCopy}
           aria-label={hasCopied ? "Copied" : "Copy"}

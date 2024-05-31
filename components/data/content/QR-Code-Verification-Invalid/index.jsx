@@ -9,19 +9,10 @@ const QR_Code_Verification_Invalid = ({ ref }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem
-            // w="100%"
-            w="40vw"
-            h="100%"
-            pos="sticky"
-            top="20"
-          >
+          <GridItem w={{ base: "", xl: "40vw" }} h="100%" pos="sticky" top="20">
             <Textt />
           </GridItem>
-          <GridItem
-            //  w="100%"
-            w="40vw"
-          >
+          <GridItem w={{ base: "", xl: "40vw" }}>
             <Example />
           </GridItem>
         </>

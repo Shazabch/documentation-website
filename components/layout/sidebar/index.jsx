@@ -22,11 +22,12 @@ const Sidebar = ({ titles, handleClick }) => {
   return (
     <VStack
       h="100dvh"
-      w={{ lg: "25%", xl: "20%", "2xl": "15%" }}
+      w={{ lg: "25%", xl: "20%", "2xl": "20%", "3xl": "20%" }}
       top="0"
       pos="fixed"
       bg={useColorModeValue("white", "#121539")}
       color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
+      borderRight="0.8px solid #2B3039"
     >
       <Header />
       <Accordion

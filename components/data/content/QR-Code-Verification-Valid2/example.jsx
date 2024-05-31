@@ -41,7 +41,15 @@ const Example = () => {
 
   return (
     <VStack pos="relative" w="full">
-      <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
+      <SyntaxHighlighter
+        customStyle={{
+          height: "100%",
+          width: "100%",
+        }}
+        language="json"
+        style={okaidia}
+        wrapLongLines
+      >
         {jsonCode}
       </SyntaxHighlighter>
       <Box pos="absolute" top="4" right="2">

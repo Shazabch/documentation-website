@@ -41,8 +41,8 @@ const Layout = () => {
   // }, [router.asPath]);
   return (
     <Box
-      // bgGradient="linear(to-t, #121539 10%, #121539 100%) "
-      bgColor={useColorModeValue("white", "#121539")}
+      bgGradient="linear(to-t, #121539 10%, #121539 100%) "
+      w="full"
       // color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
     >
       {isDesktop ? (
@@ -54,10 +54,14 @@ const Layout = () => {
             "3xl": "20% 80%",
           }}
         >
-          <GridItem w="full" borderRight="0.8px solid #2B3039">
+          <GridItem w="full">
             <Sidebar titles={sidebarTitles} handleClick={handleNavigation} />
           </GridItem>
-          <GridItem h="full" w="full">
+          <GridItem
+            h="full"
+            w="full"
+            bgColor={useColorModeValue("white", "#121539 100%")}
+          >
             <Navbar />
 
             {Object.keys(ComponentMapping).map((key) => {
@@ -69,7 +73,7 @@ const Layout = () => {
                   id={Component.name}
                   py={{ base: 4, xl: 20 }}
                   gap={{ lg: 8, xl: "", "2xl": "" }}
-                  px={{ lg: 10, xl: "", "2xl": "20", "3xl": "80" }}
+                  px={{ lg: 10, xl: "20", "2xl": "20", "3xl": "80" }}
                   display="flex"
                   zIndex="-1"
                   borderBottom="0.8px solid #2B3039"

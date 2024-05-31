@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <VStack
-      w={{ lg: "25%", xl: "20%", "2xl": 60, "3xl": "80" }}
+      w={{ lg: "xs", xl: "2xs", "2xl": "xs", "3xl": "md" }}
       // border={{
       //   lg: "2px solid red",
       //   xl: "2px solid pink",
@@ -58,7 +58,7 @@ const Header = () => {
           size="sm"
         />
       </HStack>
-      <InputGroup>
+      <InputGroup px={{ xl: "2", "3xl": "0" }}>
         <InputLeftElement
           alignItems="center"
           display="flex"
