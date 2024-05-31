@@ -10,7 +10,6 @@ const QR_Code_Verification_Invalid = ({ ref }) => {
       {isDesktop ? (
         <>
           <GridItem
-            border="2px solid red"
             // w="100%"
             w="40vw"
             h="100%"
@@ -22,7 +21,6 @@ const QR_Code_Verification_Invalid = ({ ref }) => {
           <GridItem
             //  w="100%"
             w="40vw"
-            border="2px solid pink"
           >
             <Example />
           </GridItem>

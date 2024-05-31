@@ -22,7 +22,7 @@ const Example = () => {
   }`;
 
   return (
-    <SyntaxHighlighter language="json" style={okaidia}>
+    <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
       {jsonCode}
     </SyntaxHighlighter>
   );

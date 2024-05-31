@@ -9,7 +9,7 @@ const Endpoints = ({ id }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="100%" id={id} border="1px solid red">
+          <GridItem w="100%" id={id}>
             <Textt />
           </GridItem>
           <GridItem w="100%"></GridItem>

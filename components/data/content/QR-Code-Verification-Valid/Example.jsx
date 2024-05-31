@@ -8,6 +8,8 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { MdDone, MdOutlineCopyAll } from "react-icons/md";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const Example = () => {
   const { colorMode } = useColorMode();
@@ -37,13 +39,19 @@ const Example = () => {
     setShowTransition(hasCopied);
   }, [hasCopied]);
   return (
-    <VStack pos="relative" w="full" borderRadius="md" textAlign="left" gap="0">
-      <Code p="2" w="full" h="full" bg="gray.700">
-        Request Body:
-        <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
-          <code>{jsonCode}</code>
-        </pre>
-      </Code>
+    <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
+      {jsonCode}
+    </SyntaxHighlighter>
+  );
+};
+
+export default Example;
+
+{
+  /* <SyntaxHighlighter language="json" style={okaidia} wrapLongLines>
+        {jsonCode}
+      </SyntaxHighlighter>
+
       <Box pos="absolute" top="2" right="2">
         <IconButton
           onClick={onCopy}
@@ -52,9 +60,5 @@ const Example = () => {
           bgColor="transparent"
           transition={showTransition ? "all 0.5s ease" : "none"}
         />
-      </Box>
-    </VStack>
-  );
-};
-
-export default Example;
+      </Box> */
+}

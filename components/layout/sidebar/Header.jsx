@@ -31,12 +31,12 @@ const Header = () => {
   return (
     <VStack
       w={{ lg: "25%", xl: "20%", "2xl": 60, "3xl": "80" }}
-      border={{
-        lg: "2px solid red",
-        xl: "2px solid pink",
-        "2xl": "2px solid green",
-        "3xl": "2px solid purple",
-      }}
+      // border={{
+      //   lg: "2px solid red",
+      //   xl: "2px solid pink",
+      //   "2xl": "2px solid green",
+      //   "3xl": "2px solid purple",
+      // }}
       py="4"
       position="fixed"
       top="0"

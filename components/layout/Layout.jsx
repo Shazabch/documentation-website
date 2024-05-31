@@ -34,7 +34,7 @@ const Layout = () => {
   //   }
   // }, [router.asPath]);
   return (
-    <Box bgGradient="linear(to-t,#3641BA 10%, #121539 100%) ">
+    <Box bgGradient="linear(to-t, #121539 10%, #121539 100%) ">
       {isDesktop ? (
         <Grid
           templateColumns={{
@@ -51,7 +51,7 @@ const Layout = () => {
           >
             <Sidebar titles={sidebarTitles} handleClick={handleNavigation} />
           </GridItem>
-          <GridItem h="full" w="full" border="5px solid red">
+          <GridItem h="full" w="full">
             <Navbar />
 
             {Object.keys(ComponentMapping).map((key) => {
@@ -59,7 +59,6 @@ const Layout = () => {
               return (
                 <Grid
                   w="100%"
-                  border="5px solid red"
                   key={Component.name}
                   id={Component.name}
                   py={{ base: 4, xl: 20 }}

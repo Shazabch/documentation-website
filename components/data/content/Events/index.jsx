@@ -9,7 +9,7 @@ const Events = ({ ref }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem w="100%" border="1px solid red">
+          <GridItem w="100%">
             <Textt />
           </GridItem>
           <GridItem w="100%">
