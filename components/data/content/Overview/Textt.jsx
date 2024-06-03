@@ -3,7 +3,7 @@ import { Heading, Text, VStack } from "@chakra-ui/react";
 
 const Overview = () => {
   return (
-    <VStack textAlign="left">
+    <VStack textAlign="left" bgColor="whiteAlpha.200" p="4" rounded="lg">
       <Heading fontSize="24" w="full">
         Overview
       </Heading>

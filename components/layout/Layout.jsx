@@ -11,6 +11,7 @@ import {
 import MobileNavbar from "./navbar/MobileNavbar";
 import ComponentMapping from "../data/content";
 import { useStateManagementStore } from "../zustand-store/state-management";
+import APIData from "@/components/common/api_data";
 import Sidebar from "./sidebar";
 import Navbar from "./navbar";
 
@@ -41,7 +42,8 @@ const Layout = () => {
   // }, [router.asPath]);
   return (
     <Box
-      bgGradient="linear(to-t, #121539 10%, #121539 100%) "
+      // bgGradient="linear(to-t, #121539 10%, #121539 100%) "
+      bgGradient="linear(to-b, #101332, #1D225F, #252C7D)"
       w="full"
       // color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
     >
@@ -55,7 +57,7 @@ const Layout = () => {
           }}
         >
           <GridItem w="full">
-            <Sidebar titles={sidebarTitles} handleClick={handleNavigation} />
+            <Sidebar titles={APIData} handleClick={handleNavigation} />
           </GridItem>
           <GridItem
             h="full"

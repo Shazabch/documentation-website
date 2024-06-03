@@ -41,6 +41,8 @@ const Example = () => {
         customStyle={{
           height: "100%",
           width: "100%",
+          backgroundColor: "#FFFFFF13",
+          borderRadius: "0.5rem",
         }}
         language="json"
         style={okaidia}

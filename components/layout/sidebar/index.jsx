@@ -16,6 +16,7 @@ import {
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Header from "./Header";
 import { useStateManagementStore } from "@/components/zustand-store/state-management";
+import FormattedTitles from "@/components/utils/FormattedTitles";
 const Sidebar = ({ titles, handleClick }) => {
   const { selectedMenu, setSelectedMenu } = useStateManagementStore();
 
@@ -61,37 +62,47 @@ const Sidebar = ({ titles, handleClick }) => {
         //       }
         // }
       >
-        <Text
-          color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
-          fontWeight="600"
-        >
-          API 1
-        </Text>
-        {titles.map((title, index) => (
-          <Text
-            key={index}
-            onClick={() => {
-              handleClick(title);
-              setSelectedMenu(title);
-            }}
-            transition="transform 0.5s ease"
-            _hover={{
-              color: useColorModeValue("#121539", "rgba(255, 255, 255, 0.92)"),
-              transform: "translateX(2%)",
-            }}
-            py="1"
-            color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
-            cursor="pointer"
-            // color={title == selectedMenu && "RGBA(255, 255, 255, 0.92)"}
-            color={
-              title === selectedMenu
-                ? useColorModeValue("#121539", "rgba(255, 255, 255, 0.92)")
-                : undefined
-            }
-            rounded="md"
-          >
-            {title}
-          </Text>
+        {titles.map((api, index) => (
+          <>
+            <Text
+              color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
+              fontWeight="600"
+            >
+              {api.name}
+            </Text>
+            {Object.keys(api.data).map((title, index) => (
+              <Text
+                key={index}
+                onClick={() => {
+                  handleClick(title);
+                  setSelectedMenu(title);
+                }}
+                transition="transform 0.5s ease"
+                _hover={{
+                  color: useColorModeValue(
+                    "#121539",
+                    "rgba(255, 255, 255, 0.92)"
+                  ),
+                  transform: "translateX(2%)",
+                }}
+                py="1"
+                color={useColorModeValue(
+                  "#121539",
+                  "RGBA(255, 255, 255, 0.92)"
+                )}
+                cursor="pointer"
+                // color={title == selectedMenu && "RGBA(255, 255, 255, 0.92)"}
+                color={
+                  title === selectedMenu
+                    ? useColorModeValue("#121539", "rgba(255, 255, 255, 0.92)")
+                    : undefined
+                }
+                rounded="md"
+              >
+                <FormattedTitles title={title} />
+              </Text>
+            ))}
+          </>
         ))}
       </Accordion>
     </VStack>
