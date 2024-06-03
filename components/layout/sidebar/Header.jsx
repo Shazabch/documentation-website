@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <VStack
-      w={{ lg: "xs", xl: "2xs", "2xl": "xs", "3xl": "md" }}
+      w={{ lg: "20vw", xl: "15vw", "2xl": "16vw", "3xl": "18vw" }}
       // border={{
       //   lg: "2px solid red",
       //   xl: "2px solid pink",
@@ -43,14 +43,17 @@ const Header = () => {
     >
       <HStack w="100%" justifyContent="space-between">
         <IconButton
-          pl="8"
+          alignItems="center"
+          display="flex"
+          bg="red"
+          w="full"
+          _hover={{ background: "transparent" }}
           bgColor="transparent"
           icon={colorMode === "dark" ? <LogoDarkMode /> : <LogoLightMode />}
           aria-label="logo"
         />
 
         <Switch
-          pr={{ xl: "2" }}
           id="color-mode-switch"
           colorScheme={colorMode == "dark" && "purple"}
           isChecked={colorMode === "dark"}
@@ -58,7 +61,7 @@ const Header = () => {
           size="sm"
         />
       </HStack>
-      <InputGroup px={{ xl: "2", "3xl": "0" }}>
+      <InputGroup>
         <InputLeftElement
           alignItems="center"
           display="flex"

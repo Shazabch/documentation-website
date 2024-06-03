@@ -12,6 +12,7 @@ import {
   VStack,
   IconButton,
   useColorModeValue,
+  Box,
 } from "@chakra-ui/react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import Header from "./Header";
@@ -29,6 +30,15 @@ const Sidebar = ({ titles, handleClick }) => {
       bg={useColorModeValue("white", "#121539")}
       color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
       borderRight="0.8px solid #2B3039"
+      border={{
+        base: "2px solid red",
+        md: "2px solid pink",
+        lg: "2px solid orange",
+        xl: "2px solid blue",
+        "2xl": "2px solid white",
+        "3xl": "2px solid green",
+        "4xl": "2px solid purple",
+      }}
     >
       <Header />
       <Accordion
@@ -65,19 +75,19 @@ const Sidebar = ({ titles, handleClick }) => {
         {titles.map((api, index) => (
           <>
             <Text
+              key={index}
               color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
               fontWeight="600"
+              fontSize={{ lg: "1.05rem" }}
             >
               {api.name}
             </Text>
             {Object.keys(api.data).map((title, index) => (
               <Text
                 key={index}
-                onClick={() => {
-                  handleClick(title);
-                  setSelectedMenu(title);
-                }}
                 transition="transform 0.5s ease"
+                cursor="pointer"
+                rounded="md"
                 _hover={{
                   color: useColorModeValue(
                     "#121539",
@@ -85,19 +95,17 @@ const Sidebar = ({ titles, handleClick }) => {
                   ),
                   transform: "translateX(2%)",
                 }}
+                onClick={() => {
+                  handleClick(title);
+                  setSelectedMenu(title);
+                }}
+                transform={title === selectedMenu && "translateX(2%)"}
                 py="1"
-                color={useColorModeValue(
-                  "#121539",
-                  "RGBA(255, 255, 255, 0.92)"
-                )}
-                cursor="pointer"
-                // color={title == selectedMenu && "RGBA(255, 255, 255, 0.92)"}
                 color={
                   title === selectedMenu
                     ? useColorModeValue("#121539", "rgba(255, 255, 255, 0.92)")
                     : undefined
                 }
-                rounded="md"
               >
                 <FormattedTitles title={title} />
               </Text>
@@ -105,6 +113,7 @@ const Sidebar = ({ titles, handleClick }) => {
           </>
         ))}
       </Accordion>
+      <Box h="10vh" w="10vw" bg="pink" />
     </VStack>
   );
 };

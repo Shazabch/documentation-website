@@ -20,26 +20,11 @@ const Layout = () => {
   const { setShowMenu } = useStateManagementStore;
   const isDesktop = useBreakpointValue({ base: false, lg: true });
 
-  //take the component names from ComponentMapping and removes "_"
-  // const sidebarTitles = Object.keys(ComponentMapping).map((key) =>
-  //   ComponentMapping[key].name.replace(/_/g, " ")
-  // );
-  const sidebarTitles = Object.keys(ComponentMapping).map(
-    (key) => ComponentMapping[key].name
-  );
-
   const handleNavigation = (id) => {
     router.push(`#/api1/${id.toLowerCase()}`, undefined, { shallow: true });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // scrollToSection(id);
-  // useEffect(() => {
-  //   const id = router.asPath.split("/");
-  //   if (id) {
-  //     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  //   }
-  // }, [router.asPath]);
   return (
     <Box
       // bgGradient="linear(to-t, #121539 10%, #121539 100%) "
@@ -52,9 +37,10 @@ const Layout = () => {
           templateColumns={{
             lg: "25% 75%",
             xl: "20% 80%",
-            "2xl": "20% 80%",
+            "2xl": "20vw 80vw",
             "3xl": "20% 80%",
           }}
+          overflowX="hidden"
         >
           <GridItem w="full">
             <Sidebar titles={APIData} handleClick={handleNavigation} />

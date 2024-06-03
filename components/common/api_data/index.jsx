@@ -9,17 +9,17 @@ import Variables from "@/components/data/content/Variables";
 import Events from "@/components/data/content/Events";
 
 const API1 = {
-  overview: Overview,
-  authentication: Authentication,
-  base_url: BaseUrl,
-  endpoints: Endpoints,
-  qr_code_verification_invalid: QR_Code_Verification_Invalid,
-  qr_code_verification_valid: QR_Code_Verification_Valid,
-  qr_code_verification_valid2: QR_Code_Verification_Valid2,
-  variables: Variables,
-  events: Events,
+  Overview,
+  Authentication,
+  BaseUrl,
+  Endpoints,
+  QR_Code_Verification_Invalid,
+  QR_Code_Verification_Valid,
+  QR_Code_Verification_Valid2,
+  Variables,
+  Events,
 };
 
-const APIData = [{ name: "API 1", data: API1 }];
+const APIData = [{ name: "QR Code Verification", data: API1 }];
 
 export default APIData;
