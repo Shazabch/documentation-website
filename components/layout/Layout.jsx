@@ -19,6 +19,7 @@ const Layout = () => {
   const router = useRouter();
   const { setShowMenu } = useStateManagementStore;
   const isDesktop = useBreakpointValue({ base: false, lg: true });
+  const bgColor = useColorModeValue("white", "#121539 100%");
 
   const handleNavigation = (id) => {
     router.push(`#/api1/${id.toLowerCase()}`, undefined, { shallow: true });
@@ -39,11 +40,7 @@ const Layout = () => {
           <GridItem w="full">
             <Sidebar titles={APIData} handleClick={handleNavigation} />
           </GridItem>
-          <GridItem
-            h="full"
-            w="full"
-            bgColor={useColorModeValue("white", "#121539 100%")}
-          >
+          <GridItem h="full" w="full" bgColor={bgColor}>
             <Navbar />
 
             {Object.keys(ComponentMapping).map((key) => {

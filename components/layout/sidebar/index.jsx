@@ -17,6 +17,7 @@ import FormattedTitles from "@/components/utils/FormattedTitles";
 const Sidebar = ({ titles, handleClick }) => {
   const { selectedMenu, setSelectedMenu } = useStateManagementStore();
   const [isHoverSidebar, setIsHoverSidebar] = useState("");
+  const color = useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)");
 
   return (
     <VStack
@@ -52,6 +53,7 @@ const Sidebar = ({ titles, handleClick }) => {
       >
         {titles.map((api, index) => (
           <AccordionItem
+            key={index}
             border="none"
             w="full"
             onMouseEnter={() => setIsHoverSidebar(index)}
@@ -62,10 +64,7 @@ const Sidebar = ({ titles, handleClick }) => {
                 <Box>
                   <Text
                     key={index}
-                    color={useColorModeValue(
-                      "#121539",
-                      "RGBA(255, 255, 255, 0.92)"
-                    )}
+                    color={color}
                     fontWeight="600"
                     fontSize={{ lg: "1.05rem" }}
                   >
@@ -83,10 +82,7 @@ const Sidebar = ({ titles, handleClick }) => {
                       cursor="pointer"
                       rounded="md"
                       _hover={{
-                        color: useColorModeValue(
-                          "#121539",
-                          "rgba(255, 255, 255, 0.92)"
-                        ),
+                        color: { color },
                         transform: "translateX(2%)",
                       }}
                       onClick={() => {
@@ -95,14 +91,7 @@ const Sidebar = ({ titles, handleClick }) => {
                       }}
                       transform={title === selectedMenu && "translateX(2%)"}
                       py="1"
-                      color={
-                        title === selectedMenu
-                          ? useColorModeValue(
-                              "#121539",
-                              "rgba(255, 255, 255, 0.92)"
-                            )
-                          : undefined
-                      }
+                      color={title === selectedMenu ? { color } : undefined}
                     >
                       <FormattedTitles title={title} />
                     </Text>
