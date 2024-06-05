@@ -8,16 +8,21 @@ import QR_Code_Verification_Valid2 from "@/components/data/content/QR-Code-Verif
 import Variables from "@/components/data/content/Variables";
 import Events from "@/components/data/content/Events";
 
-const ComponentMapping = {
-  overview: Overview,
-  authentication: Authentication,
-  base_url: BaseUrl,
-  endpoints: Endpoints,
-  qr_code_verification_invalid: QR_Code_Verification_Invalid,
-  qr_code_verification_valid: QR_Code_Verification_Valid,
-  qr_code_verification_valid2: QR_Code_Verification_Valid2,
-  variables: Variables,
-  events: Events,
+const API1 = {
+  Overview,
+  Authentication,
+  BaseUrl,
+  Endpoints,
+  QR_Code_Verification_Invalid,
+  QR_Code_Verification_Valid,
+  QR_Code_Verification_Valid2,
+  Variables,
+  Events,
 };
 
-export default ComponentMapping;
+const APIData = [
+  { name: "QR Code Verification", data: API1 },
+  { name: "QR Code Verification2", data: API1 },
+];
+
+export default APIData;

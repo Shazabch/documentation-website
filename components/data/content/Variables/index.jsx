@@ -1,26 +1,26 @@
-import {
-  GridItem,
-  useBreakpointValue,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
-const Authentication = ({ id }) => {
+import Example from "./Example";
+const Variables = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
     <>
       {isDesktop ? (
         <>
-          <GridItem id={id}>
+          <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
             <Textt />
           </GridItem>
-          <GridItem></GridItem>
+          <GridItem w={{ base: "", xl: "40vw" }}>
+            <Example />
+          </GridItem>
         </>
       ) : (
         <>
           <GridItem w="100%">
             <Textt />
+            <Example />
           </GridItem>
         </>
       )}
@@ -28,4 +28,4 @@ const Authentication = ({ id }) => {
   );
 };
 
-export default Authentication;
+export default Variables;

@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, IconButton } from "@chakra-ui/react";
+import { Box, Button, IconButton, useColorMode } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import MobileSidebar from "../sidebar/MobileSidebar";
 import { useStateManagementStore } from "../../zustand-store/state-management";
 import { scroller } from "react-scroll";
+import SearchModal from "@/components/common/search_bar";
 
 const MobileNavbar = () => {
-  // const { showMenu, setShowMenu, selectedMenu } = useStateManagementStore();
-  const showMenu = "";
-  const setShowMenu = "";
-  const selectedMenu = "";
+  const {
+    showMenu,
+    setShowMenu,
+    selectedMenu,
+    onOpenSearchModal,
+    isOpenSearchModal,
+    onCloseSearchModal,
+    onToggleSearchModal,
+  } = useStateManagementStore();
+  const { colorMode } = useColorMode();
 
-  const scrollToSection = (section) => {
-    scroller.scrollTo(section, {
-      duration: 800,
-      delay: 2000,
-      smooth: "easeInOutQuart",
-    });
-  };
+  console.log(isOpenSearchModal);
 
   return (
     <>
@@ -39,6 +40,7 @@ const MobileNavbar = () => {
             bgColor: "transparent",
           }}
           onClick={() => setShowMenu(!showMenu)}
+          color={colorMode === "light" ? "white" : "inherit"}
         >
           {selectedMenu ? selectedMenu : "Introduction"}
           <IconButton
@@ -50,17 +52,9 @@ const MobileNavbar = () => {
             icon={<IoIosArrowDown size={12} />}
           />
         </Button>
-
-        <Button bgColor="transparent" color="blue.500">
-          <IconButton
-            bgColor="transparent"
-            aria-label="mobile-searchIcon"
-            icon={<CiSearch size={20} />}
-          />
-          Sign in
-        </Button>
       </Box>
-      {showMenu && <MobileSidebar scrollToSection={scrollToSection} />}
+      {showMenu && <MobileSidebar />}
+      {isOpenSearchModal && <SearchModal />}
     </>
   );
 };

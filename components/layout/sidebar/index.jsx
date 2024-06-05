@@ -1,46 +1,46 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import {
   Accordion,
   AccordionItem,
-  AccordionButton,
   AccordionPanel,
+  AccordionButton,
   AccordionIcon,
   Text,
-  Button,
   VStack,
-  IconButton,
+  useColorModeValue,
+  Box,
 } from "@chakra-ui/react";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import { IoIosArrowDown } from "react-icons/io";
-import SIDEBAR_DATA from "@/components/data/Sidebar";
 import Header from "./Header";
 import { useStateManagementStore } from "@/components/zustand-store/state-management";
-
-const Sidebar = ({ scrollToSection }) => {
-  const router = useRouter();
-  const { selectedMenu, setSelectedMenu, setCurrentRoute, currentRoute } =
-    useStateManagementStore();
-  const [showScrollbar, setShowScrollbar] = useState(false);
-
-  const handleRouteURL = (heading, topic) => {
-    const formattedHeading = heading.replace(/ /g, "_").toLowerCase();
-    const formattedTopic = topic.replace(/ /g, "_").toLowerCase();
-    setCurrentRoute(localStorage.setItem("route", formattedTopic));
-    router.push(`/${formattedHeading}/${formattedTopic}`, undefined, {
-      shallow: true,
-    });
-  };
-
-  setTimeout(() => {
-    scrollToSection(localStorage.getItem("route"));
-  }, 100);
+import FormattedTitles from "@/components/utils/FormattedTitles";
+const Sidebar = ({ titles, handleClick }) => {
+  const { selectedMenu, setSelectedMenu } = useStateManagementStore();
+  const [isHoverSidebar, setIsHoverSidebar] = useState("");
+  const color = useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)");
 
   return (
-    <VStack h="100dvh" w="15%" top="0" pos="fixed">
+    <VStack
+      h="100dvh"
+      w={{ lg: "25%", xl: "20%", "2xl": "19%", "3xl": "20%" }}
+      top="0"
+      pos="fixed"
+      color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
+      bg={useColorModeValue("white", "#121539")}
+      borderRight="0.8px solid #2B3039"
+      border={{
+        base: "2px solid red",
+        md: "2px solid pink",
+        lg: "2px solid orange",
+        xl: "2px solid blue",
+        "2xl": "2px solid white",
+        "3xl": "2px solid green",
+        "4xl": "2px solid purple",
+      }}
+    >
       <Header />
       <Accordion
+        pl="4"
         py="4"
         mt="32"
         mb="4"
@@ -49,93 +49,83 @@ const Sidebar = ({ scrollToSection }) => {
         allowToggle
         variant="flushed"
         w="full"
-        overflowY="scroll"
-        onMouseEnter={() => setShowScrollbar(true)}
-        onMouseLeave={() => setShowScrollbar(false)}
-        css={
-          showScrollbar
-            ? {
-                "&::-webkit-scrollbar": {
-                  width: "8px",
-                },
-                "&::-webkit-scrollbar-thumb": {
-                  backgroundColor: "#CBD5E0",
-                  borderRadius: "8px",
-                },
-              }
-            : {
-                "&::-webkit-scrollbar": {
-                  display: "none",
-                },
-              }
-        }
+        overflow="hidden"
       >
-        {SIDEBAR_DATA.map((section, index) => (
-          <AccordionItem w="full" border="none" key={index}>
-            <AccordionButton w="full" justifyContent="space-between">
-              <Text
-                fontWeight="600"
-                flex="1"
-                textAlign="left"
-                mr="4"
-                fontSize="14"
-              >
-                {section.heading}
-              </Text>
-              <AccordionIcon />
-            </AccordionButton>
-            <AccordionPanel pb={4}>
-              <Text as="ul" pl="4" fontSize="14">
-                {section.topics.map((topic, topicIndex) => (
+        {titles.map((api, index) => (
+          <AccordionItem
+            key={index}
+            border="none"
+            w="full"
+            onMouseEnter={() => setIsHoverSidebar(index)}
+            onMouseLeave={() => setIsHoverSidebar(-1)}
+          >
+            <>
+              <AccordionButton justifyContent="space-between">
+                <Box>
                   <Text
-                    onClick={() => {
-                      handleRouteURL(section.heading, topic);
-                      setSelectedMenu(topic);
-                    }}
-                    py="1"
-                    cursor="pointer"
-                    bg={topic == selectedMenu && "purple.100"}
-                    color={topic == selectedMenu && "blue.700"}
-                    rounded="md"
-                    as="li"
-                    key={topicIndex}
+                    key={index}
+                    color={color}
+                    fontWeight="600"
+                    fontSize={{ lg: "1.05rem" }}
                   >
-                    {topic}
+                    {api.name}
                   </Text>
-                ))}
-              </Text>
-            </AccordionPanel>
+                </Box>
+                <AccordionIcon />
+              </AccordionButton>
+              {isHoverSidebar == index && (
+                <AccordionPanel>
+                  {Object.keys(api.data).map((title, index) => (
+                    <Text
+                      key={index}
+                      transition="transform 0.5s ease"
+                      cursor="pointer"
+                      rounded="md"
+                      _hover={{
+                        color: { color },
+                        transform: "translateX(2%)",
+                      }}
+                      onClick={() => {
+                        handleClick(title);
+                        setSelectedMenu(title);
+                      }}
+                      transform={title === selectedMenu && "translateX(2%)"}
+                      py="1"
+                      color={title === selectedMenu ? { color } : undefined}
+                    >
+                      <FormattedTitles title={title} />
+                    </Text>
+                  ))}
+                </AccordionPanel>
+              )}
+            </>
           </AccordionItem>
         ))}
-        <Button
-          w="full"
-          _hover={{
-            bg: "transparent",
-          }}
-          py="6"
-          bg="transparent"
-          pos="absolute"
-          color="blue.600"
-          bottom="0"
-          borderTop="0.8px solid #2B3039"
-          borderBottom="0.8px solid #2B3039"
-        >
-          <Text w="full" textAlign="left">
-            Sign in
-            <IconButton
-              bgColor="transparent"
-              _hover={{
-                bgColor: "transparent",
-              }}
-              color="blue.600"
-              aria-label="signinbutton-sidebar"
-              icon={<IoIosArrowRoundForward size={24} />}
-            />
-          </Text>
-        </Button>
       </Accordion>
     </VStack>
   );
 };
 
 export default Sidebar;
+
+{
+  /* onMouseEnter={() => setShowScrollbar(true)}
+         onMouseLeave={() => setShowScrollbar(false)}
+        css={
+           showScrollbar
+             ? {
+                 "&::-webkit-scrollbar": {
+                   width: "8px",
+                 },
+                 "&::-webkit-scrollbar-thumb": {
+                   backgroundColor: "#CBD5E0",
+                   borderRadius: "8px",
+                 },
+               }
+             : {
+                 "&::-webkit-scrollbar": {
+                   display: "none",
+                 },
+               }
+         } */
+}

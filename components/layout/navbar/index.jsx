@@ -1,6 +1,12 @@
 "use client";
 import React from "react";
-import { HStack, Flex, Link } from "@chakra-ui/react";
+import {
+  HStack,
+  Flex,
+  Link,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import NextLink from "next/link";
 
 const Navbar = () => {
@@ -11,23 +17,18 @@ const Navbar = () => {
       position="sticky"
       top="0"
       justifyContent="flex-end"
-      color="blue.600"
+      color="blue.500"
       borderBottom="0.8px solid #2B3039"
       zIndex="2"
-      bgColor="#1a202c"
+      bg={useColorModeValue("white", "#121539")}
     >
-      <HStack position="relative" px="12" justifyContent="space-around" gap="3">
-        <Link as={NextLink} href="/">
+      <HStack position="relative" px="12">
+        <Link
+          as={NextLink}
+          href="/"
+          color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
+        >
           API Reference
-        </Link>
-        <Link as={NextLink} href="/products">
-          Docs
-        </Link>
-        <Link as={NextLink} href="/cart">
-          Support
-        </Link>
-        <Link as={NextLink} href="/cart">
-          Sign in
         </Link>
       </HStack>
     </Flex>
