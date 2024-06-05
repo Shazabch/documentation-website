@@ -18,7 +18,7 @@ const Variables = () => {
         </>
       ) : (
         <>
-          <GridItem>
+          <GridItem w="100%">
             <Textt />
             <Example />
           </GridItem>

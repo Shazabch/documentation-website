@@ -76,7 +76,6 @@ const Header = () => {
         <Input
           h="8"
           fontSize="12"
-          border="1px solid gray"
           placeholder="Find anything"
           onClick={onOpenSearchModal}
         />

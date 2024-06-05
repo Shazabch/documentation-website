@@ -21,11 +21,8 @@ const Navbar = () => {
       borderBottom="0.8px solid #2B3039"
       zIndex="2"
       bg={useColorModeValue("white", "#121539")}
-      // bgGradient="linear(to-t,  10%, #121539 100%) "
-
-      // bgColor="#1a202c"
     >
-      <HStack position="relative" px="12" justifyContent="space-around" gap="3">
+      <HStack position="relative" px="12">
         <Link
           as={NextLink}
           href="/"

@@ -26,21 +26,15 @@ const Layout = () => {
   };
 
   return (
-    <Box
-      // bgGradient="linear(to-t, #121539 10%, #121539 100%) "
-      bgGradient="linear(to-b, #101332, #1D225F, #252C7D)"
-      w="full"
-      // color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
-    >
+    <Box bgGradient="linear(to-b, #101332, #1D225F)" w="full">
       {isDesktop ? (
         <Grid
           templateColumns={{
             lg: "25% 75%",
             xl: "20% 80%",
-            "2xl": "20vw 80vw",
+            "2xl": "18.75vw 80vw",
             "3xl": "20% 80%",
           }}
-          overflowX="hidden"
         >
           <GridItem w="full">
             <Sidebar titles={APIData} handleClick={handleNavigation} />
