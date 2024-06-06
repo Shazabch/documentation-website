@@ -5,6 +5,7 @@ import {
   IconButton,
   useClipboard,
   useColorModeValue,
+  useColorMode,
 } from "@chakra-ui/react";
 import { MdDone, MdOutlineCopyAll } from "react-icons/md";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -12,6 +13,7 @@ import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const Example = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
+  const { colorMode } = useColorMode();
 
   const jsonCode = `{
      "DateIssued": "16 March 2022",
@@ -44,7 +46,7 @@ const Example = () => {
         customStyle={{
           height: "100%",
           width: "100%",
-          borderRadius: "0.5rem",
+          backgroundColor: colorMode == "dark" ? "transparent" : "transparent",
         }}
         language="json"
         style={okaidia}
