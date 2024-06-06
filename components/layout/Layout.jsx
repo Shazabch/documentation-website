@@ -55,7 +55,7 @@ const Layout = () => {
                   px={{ lg: 10, xl: "20", "2xl": "20", "3xl": "80" }}
                   display="flex"
                   zIndex="-1"
-                  borderBottom="0.8px solid #2B3039"
+                  // borderBottom="0.8px solid #2B3039"
                 >
                   <Component />
                 </Grid>

@@ -1,13 +1,15 @@
 import React from "react";
-import { Code, Heading, Text, VStack } from "@chakra-ui/react";
+import { Code, Heading, Text, VStack, useColorModeValue } from "@chakra-ui/react";
 
 const QR_Code_Verification_Valid2 = () => {
+  const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
+
   return (
     <VStack
       textAlign="left"
       border={null}
       py="4"
-      bgColor="whiteAlpha.200"
+      bgColor={bgColor}
       p="4"
       rounded="lg"
     >

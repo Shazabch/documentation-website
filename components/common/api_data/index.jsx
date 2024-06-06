@@ -20,9 +20,6 @@ const API1 = {
   Events,
 };
 
-const APIData = [
-  { name: "QR Code Verification", data: API1 },
-  { name: "QR Code Verification2", data: API1 },
-];
+const APIData = [{ name: "QR Code Verification", data: API1 }];
 
 export default APIData;

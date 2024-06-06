@@ -1,25 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box, Button, IconButton, useColorMode } from "@chakra-ui/react";
 import { IoIosArrowDown } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import MobileSidebar from "../sidebar/MobileSidebar";
 import { useStateManagementStore } from "../../zustand-store/state-management";
-import { scroller } from "react-scroll";
 import SearchModal from "@/components/common/search_bar";
 
 const MobileNavbar = () => {
-  const {
-    showMenu,
-    setShowMenu,
-    selectedMenu,
-    onOpenSearchModal,
-    isOpenSearchModal,
-    onCloseSearchModal,
-    onToggleSearchModal,
-  } = useStateManagementStore();
+  const { showMenu, setShowMenu, selectedMenu, isOpenSearchModal } =
+    useStateManagementStore();
   const { colorMode } = useColorMode();
-
-  console.log(isOpenSearchModal);
 
   return (
     <>

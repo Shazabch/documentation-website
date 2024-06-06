@@ -56,8 +56,7 @@ const Sidebar = ({ titles, handleClick }) => {
             key={index}
             border="none"
             w="full"
-            onMouseEnter={() => setIsHoverSidebar(index)}
-            onMouseLeave={() => setIsHoverSidebar(-1)}
+            onClick={() => setIsHoverSidebar(index)}
           >
             <>
               <AccordionButton justifyContent="space-between">
@@ -91,7 +90,8 @@ const Sidebar = ({ titles, handleClick }) => {
                       }}
                       transform={title === selectedMenu && "translateX(2%)"}
                       py="1"
-                      color={title === selectedMenu ? { color } : undefined}
+                      color={title === selectedMenu ? color : undefined}
+                      fontWeight={title === selectedMenu ? "700" : "400"}
                     >
                       <FormattedTitles title={title} />
                     </Text>
@@ -107,25 +107,3 @@ const Sidebar = ({ titles, handleClick }) => {
 };
 
 export default Sidebar;
-
-{
-  /* onMouseEnter={() => setShowScrollbar(true)}
-         onMouseLeave={() => setShowScrollbar(false)}
-        css={
-           showScrollbar
-             ? {
-                 "&::-webkit-scrollbar": {
-                   width: "8px",
-                 },
-                 "&::-webkit-scrollbar-thumb": {
-                   backgroundColor: "#CBD5E0",
-                   borderRadius: "8px",
-                 },
-               }
-             : {
-                 "&::-webkit-scrollbar": {
-                   display: "none",
-                 },
-               }
-         } */
-}
