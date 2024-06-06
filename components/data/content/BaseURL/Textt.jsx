@@ -1,9 +1,17 @@
 import React from "react";
-import { Code, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Code,
+  Heading,
+  Text,
+  VStack,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 const Textt = () => {
+  const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
+
   return (
-    <VStack textAlign="left" bgColor="whiteAlpha.200" p="4" rounded="lg">
+    <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
         Base URL
       </Heading>

@@ -13,7 +13,6 @@ import {
   Code,
   Text,
   IconButton,
-  Flex,
 } from "@chakra-ui/react";
 import { useStateManagementStore } from "@/components/zustand-store/state-management";
 import { CiSearch } from "react-icons/ci";
@@ -48,7 +47,6 @@ const SearchModal = ({}) => {
       document
         .getElementById(selectedMenu)
         ?.scrollIntoView({ behavior: "smooth" });
-      // onCloseSearchModal();
       setSearch("");
     }
   }, [selectedMenu]);

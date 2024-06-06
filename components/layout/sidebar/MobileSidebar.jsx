@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Text, Box, Button, VStack, useColorMode } from "@chakra-ui/react";
+import React from "react";
+import { Text, Box, useColorMode } from "@chakra-ui/react";
 import { useStateManagementStore } from "../../zustand-store/state-management";
 import { useRouter } from "next/navigation";
 import ComponentMapping from "@/components/data/content";

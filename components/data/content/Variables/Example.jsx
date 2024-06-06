@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import {
   Box,
-  Code,
   VStack,
   IconButton,
   useClipboard,
-  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { MdDone, MdOutlineCopyAll } from "react-icons/md";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const Example = () => {
-  const { colorMode } = useColorMode();
+  const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
 
   const jsonCode = `{
    "DateIssued": "16 March 2022",
@@ -40,13 +39,11 @@ const Example = () => {
   }, [hasCopied]);
 
   return (
-    <VStack pos="relative" w="full">
+    <VStack pos="relative" w="full" bgColor={bgColor} borderRadius="lg">
       <SyntaxHighlighter
         customStyle={{
           height: "100%",
           width: "100%",
-
-          backgroundColor: "#FFFFFF13",
           borderRadius: "0.5rem",
         }}
         language="json"
@@ -65,23 +62,6 @@ const Example = () => {
         />
       </Box>
     </VStack>
-    // <VStack pos="relative" w="full" borderRadius="md" textAlign="left" gap="0">
-    //   <Code p="2" w="full" h="full" bg="gray.700">
-    //     Request Body:
-    //     <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
-    //       <code>{jsonCode}</code>
-    //     </pre>
-    //   </Code>
-    //   <Box pos="absolute" top="2" right="2">
-    //     <IconButton
-    //       onClick={onCopy}
-    //       aria-label={hasCopied ? "Copied" : "Copy"}
-    //       icon={hasCopied ? <MdDone /> : <MdOutlineCopyAll />}
-    //       bgColor="transparent"
-    //       transition={showTransition ? "all 0.5s ease" : "none"}
-    //     />
-    //   </Box>
-    // </VStack>
   );
 };
 

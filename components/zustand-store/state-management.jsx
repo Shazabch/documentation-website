@@ -16,10 +16,3 @@ export const useStateManagementStore = create((set) => ({
   onCloseSearchModal: () => set({ isOpenSearchModal: false }),
   onToggleSearchModal: () => set({ isOpenSearchModal: !isOpenSearchModal }),
 }));
-
-// handleNavigation: (id) => {
-//   const router = useRouter();
-//   router.push(`#${id.toLowerCase()}`, undefined, { shallow: true });
-//   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-//   set({ selectedMenu: id });
-// },

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import {
   Box,
-  Code,
   VStack,
   IconButton,
   useClipboard,
-  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { MdDone, MdOutlineCopyAll } from "react-icons/md";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const Example = () => {
-  const { colorMode } = useColorMode();
+  const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
 
   const jsonCode = `{
      "DateIssued": "16 March 2022",
@@ -40,13 +39,11 @@ const Example = () => {
   }, [hasCopied]);
 
   return (
-    <VStack pos="relative" w="full">
+    <VStack pos="relative" w="full" bgColor={bgColor} borderRadius="lg">
       <SyntaxHighlighter
         customStyle={{
           height: "100%",
           width: "100%",
-          backgroundColor: "#FFFFFF13",
-
           borderRadius: "0.5rem",
         }}
         language="json"
