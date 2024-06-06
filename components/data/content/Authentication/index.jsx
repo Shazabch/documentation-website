@@ -1,8 +1,4 @@
-import {
-  GridItem,
-  useBreakpointValue,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
 const Authentication = ({ id }) => {
