@@ -1,16 +1,12 @@
 import React from "react";
-import { Text, Box, useColorMode } from "@chakra-ui/react";
+import { Text, Box, useColorMode, Heading } from "@chakra-ui/react";
 import { useStateManagementStore } from "../../zustand-store/state-management";
 import { useRouter } from "next/navigation";
-import ComponentMapping from "@/components/data/content";
+import APIData from "@/components/common/api_data";
 
 const MobileSidebar = () => {
   const router = useRouter();
   const { colorMode } = useColorMode();
-
-  const sidebarTitles = Object.keys(ComponentMapping).map(
-    (key) => ComponentMapping[key].name
-  );
 
   const handleNavigation = (id) => {
     router.push(`#/api1/${id}`, undefined, { shallow: true });
@@ -29,30 +25,40 @@ const MobileSidebar = () => {
       px="8"
       zIndex="1"
     >
-      <>
-        {sidebarTitles?.map((title, index) => (
-          <Text
-            pl="4"
-            onClick={() => {
-              handleNavigation(title);
-              setSelectedMenu(title);
-              setShowMenu(false);
-            }}
-            py="1"
-            cursor="pointer"
-            _hover={{
-              bg: "blue.100",
-              color: "blue.500",
-            }}
-            bg={title == selectedMenu && "blue.500"}
-            rounded="md"
-            key={index}
+      {APIData?.map((api, index) => (
+        <Box key={index} mb="4">
+          <Heading
+            size="md"
             color={colorMode === "light" ? "white" : "inherit"}
+            mb="2"
           >
-            {title}
-          </Text>
-        ))}
-      </>
+            {api.name}
+          </Heading>
+
+          {Object.keys(api.data).map((title, index) => (
+            <Text
+              pl="4"
+              onClick={() => {
+                handleNavigation(title);
+                setSelectedMenu(title);
+                setShowMenu(false);
+              }}
+              py="1"
+              cursor="pointer"
+              _hover={{
+                bg: "blue.100",
+                color: "blue.500",
+              }}
+              bg={title === selectedMenu ? "blue.500" : "transparent"}
+              rounded="md"
+              key={index}
+              color={colorMode === "light" ? "white" : "inherit"}
+            >
+              {title}
+            </Text>
+          ))}
+        </Box>
+      ))}
     </Box>
   );
 };
