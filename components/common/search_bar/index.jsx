@@ -41,7 +41,7 @@ const SearchModal = ({}) => {
 
   useEffect(() => {
     if (selectedMenu) {
-      router.push(`#${selectedMenu.toLowerCase()}`, undefined, {
+      router.push(`#/api1/${selectedMenu.toLowerCase()}`, undefined, {
         shallow: true,
       });
       document
@@ -67,7 +67,6 @@ const SearchModal = ({}) => {
     <>
       <Modal
         borderRadius="xl"
-        // border="2px solid red"
         isOpen={isOpenSearchModal}
         onClose={onCloseSearchModal}
       >

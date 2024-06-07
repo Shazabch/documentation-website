@@ -13,11 +13,11 @@ const MobileSidebar = () => {
   );
 
   const handleNavigation = (id) => {
-    router.push(`#${id}`, undefined, { shallow: true });
+    router.push(`#/api1/${id}`, undefined, { shallow: true });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const { selectedMenu, setShowMenu, setSelectedMenu, setCurrentRoute } =
+  const { selectedMenu, setShowMenu, setSelectedMenu } =
     useStateManagementStore();
 
   return (
