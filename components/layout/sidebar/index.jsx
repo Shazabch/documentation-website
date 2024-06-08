@@ -66,6 +66,7 @@ const Sidebar = ({ titles, handleClick }) => {
                     color={color}
                     fontWeight="600"
                     fontSize={{ lg: "1.05rem" }}
+                    textAlign="left"
                   >
                     {api.name}
                   </Text>
