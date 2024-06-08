@@ -18,13 +18,21 @@ import UMID_SSN_Verification from "@/components/data/content/Phillippines_Verifi
 import API_Documentation_for_Infonesia_Verification_Currently_Forbidden_API3 from "@/components/data/content/API_Documentation_for_Indonesia_Verification_Currently_Forbidden/API_Documentation_for_Indonesia_Verification_Currently_Forbidden_API3";
 import Dukcapil_Verification from "@/components/data/content/API_Documentation_for_Indonesia_Verification_Currently_Forbidden/Dukcapil_Verification";
 import Dukcapil_Face_Match_Verification from "@/components/data/content/API_Documentation_for_Indonesia_Verification_Currently_Forbidden/Dukcapil_Face_Match_Verification";
-import Error_Handling2 from "@/components/data/content/Phillippines_Verification/Error_Handling";
 import AML_Verification from "@/components/data/content/API_Documentation_for_Compliance_Verification/AML_Verification";
 import Get_AML_PDF from "@/components/data/content/API_Documentation_for_Compliance_Verification/Get_AML_PDF";
 import Phone_Risk_Verification from "@/components/data/content/API_Documentation_for_Compliance_Verification/Phone_Risk_Verification";
 
 import API_Documentation_for_Compliance_Verification_API4 from "@/components/data/content/API_Documentation_for_Compliance_Verification/API_Documentation_for_Compliance_Verification_API4";
 import Email_Risk_Verification from "@/components/data/content/API_Documentation_for_Compliance_Verification/Email_Risk_Verification";
+import API_Documentation_for_Biometric_Verification_API5 from "@/components/data/content/API_Documentation_for_Biometrics_Verification_API5/API_Documentation_for_Biometrics_Verification";
+import Verification from "@/components/data/content/API_Documentation_for_Biometrics_Verification_API5/Verification";
+import Registration from "@/components/data/content/API_Documentation_for_Biometrics_Verification_API5/Registration";
+import Face_Compare from "@/components/data/content/API_Documentation_for_Biometrics_Verification_API5/Face_Compare";
+import Error_Handling2 from "@/components/data/content/API_Documentation_for_Indonesia_Verification_Currently_Forbidden/Error_Handling";
+
+import Error_Handling3 from "@/components/data/content/API_Documentation_for_Compliance_Verification/Error_Handling";
+import Error_Handling4 from "@/components/data/content/API_Documentation_for_Biometrics_Verification_API5/Error_Handling";
+
 const API1 = {
   Overview,
   Authentication,
@@ -60,6 +68,15 @@ const API4 = {
   Get_AML_PDF,
   Email_Risk_Verification,
   Phone_Risk_Verification,
+  Error_Handling3,
+};
+
+const API5 = {
+  API_Documentation_for_Biometric_Verification_API5,
+  Verification,
+  Registration,
+  Face_Compare,
+  Error_Handling4,
 };
 const APIData = [
   { name: "QR Code Verification", data: API1 },
@@ -71,6 +88,10 @@ const APIData = [
   {
     name: "API Documentation for Compliance Verification API",
     data: API4,
+  },
+  {
+    name: "API Documentation for Biometric Verification",
+    data: API5,
   },
 ];
 
