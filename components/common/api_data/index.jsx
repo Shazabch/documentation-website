@@ -69,7 +69,7 @@ const APIData = [
     data: API3,
   },
   {
-    name: "API Documentation for Compliance Verification API4",
+    name: "API Documentation for Compliance Verification API",
     data: API4,
   },
 ];
