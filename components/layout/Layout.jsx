@@ -21,7 +21,7 @@ const Layout = () => {
   const bgColor = useColorModeValue("white", "#121539 100%");
 
   const handleNavigation = (id) => {
-    router.push(`#/api1/${id.toLowerCase()}`, undefined, { shallow: true });
+    router.push(`#/${id.toLowerCase()}`, undefined, { shallow: true });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 

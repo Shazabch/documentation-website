@@ -43,7 +43,9 @@ const SearchModal = ({}) => {
 
   useEffect(() => {
     if (selectedMenu) {
-      router.push(`#/api1/${selectedMenu.toLowerCase()}`, undefined, {
+      router.push(`#/${selectedMenu.toLowerCase()}`, undefined, {
+        // router.push(`#/api1/${selectedMenu.toLowerCase()}`, undefined, {
+
         shallow: true,
       });
       document

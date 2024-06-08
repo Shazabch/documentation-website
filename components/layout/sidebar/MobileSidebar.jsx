@@ -10,7 +10,7 @@ const MobileSidebar = () => {
   const { colorMode } = useColorMode();
 
   const handleNavigation = (id) => {
-    router.push(`#/api1/${id}`, undefined, { shallow: true });
+    router.push(`#/${id}`, undefined, { shallow: true });
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
