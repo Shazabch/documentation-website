@@ -1,8 +1,7 @@
 import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import Textt from "./Textt";
-import Example from "./Example";
-const Events = ({ ref }) => {
+const Events = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -12,15 +11,12 @@ const Events = ({ ref }) => {
           <GridItem w="100%">
             <Textt />
           </GridItem>
-          <GridItem w="100%">
-            <Example />
-          </GridItem>
+          <GridItem w="100%"></GridItem>
         </>
       ) : (
         <>
           <GridItem w="100%">
             <Textt />
-            <Example />
           </GridItem>
         </>
       )}

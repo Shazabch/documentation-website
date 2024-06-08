@@ -3,6 +3,7 @@ import { Text, Box, useColorMode, Heading } from "@chakra-ui/react";
 import { useStateManagementStore } from "../../zustand-store/state-management";
 import { useRouter } from "next/navigation";
 import APIData from "@/components/common/api_data";
+import FormattedTitles from "@/components/utils/FormattedTitles";
 
 const MobileSidebar = () => {
   const router = useRouter();
@@ -54,7 +55,7 @@ const MobileSidebar = () => {
               key={index}
               color={colorMode === "light" ? "white" : "inherit"}
             >
-              {title}
+              <FormattedTitles title={title} />
             </Text>
           ))}
         </Box>

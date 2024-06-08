@@ -1,0 +1,1 @@
+// This document outlines how to use the API endpoints available for Indonesia verification services. Each endpoint allows verification of different types of documents. The general setup and request structure are explained below, followed by specific endpoint instructions.

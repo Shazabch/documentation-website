@@ -18,7 +18,7 @@ import { useStateManagementStore } from "@/components/zustand-store/state-manage
 import { CiSearch } from "react-icons/ci";
 import { HiArrowsUpDown } from "react-icons/hi2";
 import { IoReturnDownBack } from "react-icons/io5";
-import ComponentMapping from "@/components/data/content";
+import APIData from "../api_data";
 
 const SearchModal = ({}) => {
   const router = useRouter();
@@ -29,9 +29,11 @@ const SearchModal = ({}) => {
     onCloseSearchModal,
   } = useStateManagementStore();
 
-  const sidebarTitles = Object.keys(ComponentMapping).map(
-    (key) => ComponentMapping[key].name
+  // iterate over the keys of each data object in apiSection and extract the name of each component.
+  const sidebarTitles = APIData.flatMap((apiSection) =>
+    Object.keys(apiSection.data).map((key) => apiSection.data[key].name)
   );
+
   const [search, setSearch] = useState("");
   const [filteredTitles, setFilteredTitles] = useState();
 

@@ -9,7 +9,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import MobileNavbar from "./navbar/MobileNavbar";
-import ComponentMapping from "../data/content";
 import { useStateManagementStore } from "../zustand-store/state-management";
 import APIData from "@/components/common/api_data";
 import Sidebar from "./sidebar";
@@ -43,46 +42,52 @@ const Layout = () => {
           <GridItem h="full" w="full" bgColor={bgColor}>
             <Navbar />
 
-            {Object.keys(ComponentMapping).map((key) => {
-              const Component = ComponentMapping[key];
-              return (
-                <Grid
-                  w="100%"
-                  key={Component.name}
-                  id={Component.name}
-                  py={{ base: 4, xl: 20 }}
-                  gap={{ lg: 8, xl: "", "2xl": "" }}
-                  px={{ lg: 10, xl: "20", "2xl": "20", "3xl": "80" }}
-                  display="flex"
-                  zIndex="-1"
-                  // borderBottom="0.8px solid #2B3039"
-                >
-                  <Component />
-                </Grid>
-              );
+            {APIData.map((apiSection) => {
+              const { data } = apiSection;
+              return Object.keys(data).map((key) => {
+                const Component = data[key];
+                return (
+                  <Grid
+                    w="100%"
+                    key={Component.name}
+                    id={Component.name}
+                    py={{ base: 4, xl: 20 }}
+                    gap={{ lg: 8, xl: "", "2xl": "" }}
+                    px={{ lg: 10, xl: "20", "2xl": "20", "3xl": "80" }}
+                    display="flex"
+                    zIndex="-1"
+                    // borderBottom="0.8px solid #2B3039"
+                  >
+                    <Component />
+                  </Grid>
+                );
+              });
             })}
           </GridItem>
         </Grid>
       ) : (
         <>
           <MobileNavbar />
-          {Object.keys(ComponentMapping).map((key) => {
-            const Component = ComponentMapping[key];
-            return (
-              <Grid
-                onClick={() => setShowMenu(false)}
-                key={Component.name}
-                id={Component.name}
-                py="12"
-                templateColumns="1fr"
-                gap="16"
-                px="4"
-                display="flex"
-                borderBottom="0.8px solid #2B3039"
-              >
-                <Component />
-              </Grid>
-            );
+          {APIData.map((apiSection) => {
+            const { data } = apiSection;
+            return Object.keys(data).map((key) => {
+              const Component = data[key];
+              return (
+                <Grid
+                  onClick={() => setShowMenu(false)}
+                  key={Component.name}
+                  id={Component.name}
+                  py="12"
+                  templateColumns="1fr"
+                  gap="16"
+                  px="4"
+                  display="flex"
+                  borderBottom="0.8px solid #2B3039"
+                >
+                  <Component />
+                </Grid>
+              );
+            });
           })}
         </>
       )}
