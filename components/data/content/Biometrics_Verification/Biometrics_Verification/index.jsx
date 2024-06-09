@@ -1,35 +1,29 @@
 import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
-const API_Documentation_for_Indonesia_Verification_Currently_Forbidden_API3 =
-  () => {
-    const isDesktop = useBreakpointValue({ base: false, md: true });
+const Biometric_Verification = () => {
+  const isDesktop = useBreakpointValue({ base: false, md: true });
 
-    return (
-      <>
-        {isDesktop ? (
-          <>
-            <GridItem
-              h="100%"
-              pos="sticky"
-              top="20"
-              w={{ base: "", xl: "40vw" }}
-            >
-              <API_Documentation_for_Infonesia_Verification_Currently_Forbidden />
-            </GridItem>
-            <GridItem w={{ base: "", xl: "40vw" }}></GridItem>
-          </>
-        ) : (
-          <>
-            <GridItem w="100%">
-              <API_Documentation_for_Infonesia_Verification_Currently_Forbidden />
-            </GridItem>
-          </>
-        )}
-      </>
-    );
-  };
+  return (
+    <>
+      {isDesktop ? (
+        <>
+          <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
+            <Details />
+          </GridItem>
+          <GridItem w={{ base: "", xl: "40vw" }}></GridItem>
+        </>
+      ) : (
+        <>
+          <GridItem w="100%">
+            <Details />
+          </GridItem>
+        </>
+      )}
+    </>
+  );
+};
 
-export default API_Documentation_for_Indonesia_Verification_Currently_Forbidden_API3;
+export default Biometric_Verification;
 
 import {
   Code,
@@ -39,19 +33,20 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-const API_Documentation_for_Infonesia_Verification_Currently_Forbidden = () => {
+const Details = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
 
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-        API Documentation for Infonesia Verification Currently Forbidden
+        Biometric Verification
       </Heading>
       <Text>
-        This document outlines how to use the API endpoints available for
-        Indonesia verification services. Each endpoint allows verification of
-        different types of documents. The general setup and request structure
-        are explained below, followed by specific endpoint instructions.
+        This document provides a guide on how to use the API endpoints available
+        for biometrics verification services. Each endpoint allows different
+        types of biometric verifications such as verification, registration, and
+        face comparison. The general setup and request structure are explained
+        below, followed by specific endpoint instructions.
         <br />
         <Text fontWeight="600" fontSize="16">
           Common Setup:

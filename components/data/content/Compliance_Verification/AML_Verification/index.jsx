@@ -1,6 +1,22 @@
-import { GridItem, useBreakpointValue } from "@chakra-ui/react";
-import React from "react";
-const Driving_Liscense_Verification = () => {
+import {
+  GridItem,
+  useBreakpointValue,
+  useClipboard,
+  useColorMode,
+  Code,
+  Heading,
+  Text,
+  VStack,
+  useColorModeValue,
+  Box,
+  IconButton,
+} from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { MdDone, MdOutlineCopyAll } from "react-icons/md";
+
+const AML_Verification = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -8,7 +24,7 @@ const Driving_Liscense_Verification = () => {
       {isDesktop ? (
         <>
           <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
-            <Overview />
+            <Details />
           </GridItem>
           <GridItem w={{ base: "", xl: "40vw" }}>
             <Example />
@@ -17,7 +33,7 @@ const Driving_Liscense_Verification = () => {
       ) : (
         <>
           <GridItem w="100%">
-            <Overview />
+            <Details />
             <Example />
           </GridItem>
         </>
@@ -26,63 +42,80 @@ const Driving_Liscense_Verification = () => {
   );
 };
 
-export default Driving_Liscense_Verification;
+export default AML_Verification;
 
-import {
-  Code,
-  Heading,
-  Text,
-  VStack,
-  useColorModeValue,
-} from "@chakra-ui/react";
-
-const Overview = () => {
+const Details = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
 
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-        Driving Liscence Verification
+        AML Verification
       </Heading>
       <Text w="full">
         Endpoint: &nbsp;
-        <Code>{` POST /v1/verification/philippines/drivinglicense `}</Code>
+        <Code>{` POST /v1/verification/aml`}</Code>
         &nbsp;
       </Text>
     </VStack>
   );
 };
 
-import { Box, IconButton, useClipboard, useColorMode } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { MdDone, MdOutlineCopyAll } from "react-icons/md";
-
 const Example = () => {
-  const jsonCode = ` {
-   "licenseNumber": "N01-23-456789",
-   "expirationDate": "1999-12-31",
-   "serialNumber": "123456789"
+  const jsonCode = `{
+  json
+Copy code
+{
+  "countries": [
+    "ID",
+    "MY"
+  ],
+  "datasets": [
+    "SAN"
+  ],
+  "dob": "1999-12-31",
+  "name": "String"
+}
+
   }`;
 
   const response = `{
- 200 OK: Verification successful.
- 401 Unauthorized: Invalid or missing access token.
- Example cURL:
- bash
- Copy code
- curl -X 'POST' \
-   '{{baseUrl}}/v1/verification/philippines/drivinglicense' \
-   -H 'accept: application/json' \
-   -H 'Content-Type: application/json' \
-   -H 'Authorization: {{accessToken}}' \
-   -d {
-     "licenseNumber": "N01-23-456789",
-     "expirationDate": "1999-12-31",
-     "serialNumber": "123456789"
-   }
+  200 OK:
+json
+Copy code
+{
+  "status": true,
+  "message": "OK",
+  "result": {
+      "results": {
+          "matchCount": 0,
+          "matches": []
+      }
+  }
+}
+401 Unauthorized: Invalid or missing access token.
+Example cURL:
+
+bash
+Copy code
+curl -X 'POST' \
+  '{{baseUrl}}/v1/verification/aml' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: {{accessToken}}' \
+  -d '{
+    "countries": [
+      "ID",
+      "MY"
+    ],
+    "datasets": [
+      "SAN"
+    ],
+    "dob": "1999-12-31",
+    "name": "String"
+  }'
   }`;
+
   const { onCopy, hasCopied } = useClipboard(JSON.stringify(jsonCode, null, 2));
   const [showTransition, setShowTransition] = useState(false);
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
@@ -132,3 +165,30 @@ const Example = () => {
     </VStack>
   );
 };
+
+// 2. UMID SSN Verification
+// Endpoint: POST /v1/verification/philippines/umidssn
+
+// Request:
+
+// json
+// Copy code
+// {
+//   "documentNumber": "0111-2345678-9"
+// }
+// Responses:
+
+// 200 OK: Verification successful.
+// 401 Unauthorized: Invalid or missing access token.
+// Example cURL:
+
+// bash
+// Copy code
+// curl -X 'POST' \
+//   '{{baseUrl}}/v1/verification/philippines/umidssn' \
+//   -H 'accept: application/json' \
+//   -H 'Content-Type: application/json' \
+//   -H 'Authorization: {{accessToken}}' \
+//   -d '{
+//     "documentNumber": "0111-2345678-9"
+//   }'

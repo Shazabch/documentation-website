@@ -16,7 +16,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { MdDone, MdOutlineCopyAll } from "react-icons/md";
 
-const AML_Verification = () => {
+const Driver_License_Verification = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -42,7 +42,7 @@ const AML_Verification = () => {
   );
 };
 
-export default AML_Verification;
+export default Driver_License_Verification;
 
 const Details = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
@@ -50,11 +50,11 @@ const Details = () => {
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-        AML Verification
+        Driver License Verification
       </Heading>
       <Text w="full">
         Endpoint: &nbsp;
-        <Code>{` POST /v1/verification/philippines/aml`}</Code>
+        <Code>{`POST /v1/verification/australia/driver_license`}</Code>
         &nbsp;
       </Text>
     </VStack>
@@ -63,57 +63,49 @@ const Details = () => {
 
 const Example = () => {
   const jsonCode = `{
-  json
-Copy code
-{
-  "countries": [
-    "ID",
-    "MY"
-  ],
-  "datasets": [
-    "SAN"
-  ],
-  "dob": "1999-12-31",
-  "name": "String"
-}
-
-  }`;
-
-  const response = `{
-  200 OK:
+Header:
 json
 Copy code
 {
-  "status": true,
-  "message": "OK",
-  "result": {
-      "results": {
-          "matchCount": 0,
-          "matches": []
-      }
-  }
+  "accept": "application/json",
+  "Content-Type": "application/json",
+  "Authorization": "{{accessToken}}"
 }
+Body (raw JSON):
+json
+Copy code
+{
+  "state_of_issue": "QLD",
+  "licence_number": "65493621",
+  "card_number": "A123456789",
+  "dob": "1965-11-19",
+  "family_name": "string",
+  "middle_name": "string",
+  "given_name": "string"
+}
+  }`;
+
+  const response = `{
+200 OK: Verification successful.
 401 Unauthorized: Invalid or missing access token.
 Example cURL:
 
 bash
 Copy code
 curl -X 'POST' \
-  '{{baseUrl}}/v1/verification/aml' \
-  -H 'Accept: application/json' \
+  '{{baseUrl}}/v1/verification/australia/driver_license' \
+  -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: {{accessToken}}' \
   -d '{
-    "countries": [
-      "ID",
-      "MY"
-    ],
-    "datasets": [
-      "SAN"
-    ],
-    "dob": "1999-12-31",
-    "name": "String"
-  }'
+        "state_of_issue": "QLD",
+        "licence_number": "65493621",
+        "card_number": "A123456789",
+        "dob": "1965-11-19",
+        "family_name": "string",
+        "middle_name": "string",
+        "given_name": "string"
+      }'
   }`;
 
   const { onCopy, hasCopied } = useClipboard(JSON.stringify(jsonCode, null, 2));

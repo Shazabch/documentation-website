@@ -6,7 +6,7 @@ const Index = () => {
 
 export default Index;
 
-// API Documentation for Philippines Verification
+//  Philippines Verification
 // This documentation provides a guide on how to use the API endpoints available in the Philippines verification service. Each endpoint allows verification of different types of documents. The common setup and request structure are detailed below, followed by specific endpoint instructions.
 
 // Common Setup

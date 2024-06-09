@@ -1,6 +1,6 @@
 import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
-const API_Documentation_for_Biometric_Verification_API5 = () => {
+const Indonesia_Verification_Currently_Forbidden = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -8,14 +8,14 @@ const API_Documentation_for_Biometric_Verification_API5 = () => {
       {isDesktop ? (
         <>
           <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
-            <API_Documentation_for_Biometric_Verification />
+            <Details />
           </GridItem>
           <GridItem w={{ base: "", xl: "40vw" }}></GridItem>
         </>
       ) : (
         <>
           <GridItem w="100%">
-            <API_Documentation_for_Biometric_Verification />
+            <Details />
           </GridItem>
         </>
       )}
@@ -23,7 +23,7 @@ const API_Documentation_for_Biometric_Verification_API5 = () => {
   );
 };
 
-export default API_Documentation_for_Biometric_Verification_API5;
+export default Indonesia_Verification_Currently_Forbidden;
 
 import {
   Code,
@@ -33,20 +33,19 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-const API_Documentation_for_Biometric_Verification = () => {
+const Details = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
 
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-        API Documentation for Biometric Verification
+        Indonesia Verification Currently Forbidden
       </Heading>
       <Text>
-        This document provides a guide on how to use the API endpoints available
-        for biometrics verification services. Each endpoint allows different
-        types of biometric verifications such as verification, registration, and
-        face comparison. The general setup and request structure are explained
-        below, followed by specific endpoint instructions.
+        This document outlines how to use the API endpoints available for
+        Indonesia verification services. Each endpoint allows verification of
+        different types of documents. The general setup and request structure
+        are explained below, followed by specific endpoint instructions.
         <br />
         <Text fontWeight="600" fontSize="16">
           Common Setup:

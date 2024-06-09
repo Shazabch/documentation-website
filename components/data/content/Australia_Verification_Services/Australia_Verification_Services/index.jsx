@@ -1,6 +1,6 @@
 import { GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
-const API_Documentation_for_Australia_Verification_Services_API6 = () => {
+const Australia_Verification_Services = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -8,14 +8,14 @@ const API_Documentation_for_Australia_Verification_Services_API6 = () => {
       {isDesktop ? (
         <>
           <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
-            <API_Documentation_for_Australia_Verification_Services />
+            <Details />
           </GridItem>
           <GridItem w={{ base: "", xl: "40vw" }}></GridItem>
         </>
       ) : (
         <>
           <GridItem w="100%">
-            <API_Documentation_for_Australia_Verification_Services />
+            <Details />
           </GridItem>
         </>
       )}
@@ -23,7 +23,7 @@ const API_Documentation_for_Australia_Verification_Services_API6 = () => {
   );
 };
 
-export default API_Documentation_for_Australia_Verification_Services_API6;
+export default Australia_Verification_Services;
 
 import {
   Code,
@@ -33,13 +33,13 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-const API_Documentation_for_Australia_Verification_Services = () => {
+const Details = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
 
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-        API Documentation for Australia Verification Services
+         Australia Verification Services
       </Heading>
       <Text>
         This document provides a guide on how to use the API endpoints available
