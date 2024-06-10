@@ -87,6 +87,19 @@ const Details = () => {
   );
 };
 
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  VStack,
+  IconButton,
+  useClipboard,
+  useColorModeValue,
+  useColorMode,
+} from "@chakra-ui/react";
+import { MdDone, MdOutlineCopyAll } from "react-icons/md";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
+
 const Example = () => {
   const jsonCode = ` {
   {
