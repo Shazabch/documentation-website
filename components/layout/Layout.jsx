@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import {
   Box,
@@ -16,14 +16,86 @@ import Navbar from "./navbar";
 
 const Layout = () => {
   const router = useRouter();
-  const { setShowMenu } = useStateManagementStore;
+  const { setShowMenu, setSelectedMenu, selectedMenu } =
+    useStateManagementStore;
   const isDesktop = useBreakpointValue({ base: false, lg: true });
   const bgColor = useColorModeValue("white", "#121539 100%");
+  const sectionRefs = useRef({});
+  const [currentSection, setCurrentSection] = useState(null);
 
-  const handleNavigation = (id) => {
-    router.push(`#/${id.toLowerCase()}`, undefined, { shallow: true });
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  // const handleNavigation = (id) => {
+  //   // router.push(`#/${id.toLowerCase()}`, undefined, { shallow: true });
+  //   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  // };
+
+  const handleNavigation = (apiName, title) => {
+    const foundSection = APIData.find((apiSection) => {
+      return apiSection.name.toLowerCase() === apiName.toLowerCase();
+    });
+
+    if (foundSection) {
+      const sectionName = Object.keys(foundSection.data).find(
+        (key) => key.toLowerCase() === title.toLowerCase()
+      );
+      const routeName = `${foundSection.name}/${sectionName}`.replace(
+        /\s+/g,
+        "_"
+      ); // Replace spaces with underscore
+      router.push(`#/${routeName}`, undefined, { shallow: true });
+    }
+    document.getElementById(title)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollPosition = window.scrollY;
+  //     let currentSectionId = null;
+
+  //     Object.entries(sectionRefs.current).forEach(([id, ref]) => {
+  //       const sectionTop = ref.offsetTop;
+  //       const sectionBottom = sectionTop + ref.offsetHeight;
+
+  //       if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+  //         currentSectionId = id;
+  //       }
+  //     });
+
+  //     if (currentSectionId !== currentSection) {
+  //       setCurrentSection(currentSectionId);
+  //       if (currentSectionId) {
+  //         // Check if the current section corresponds to any section in API data
+  //         const foundSection = APIData.find((apiSection) => {
+  //           return Object.keys(apiSection.data).find(
+  //             (key) => key.toLowerCase() === currentSectionId
+  //           );
+  //         });
+
+  //         if (foundSection) {
+  //           // const sectionName = Object.keys(foundSection.data).find(
+  //           //   (key) => key.toLowerCase() === currentSectionId
+  //           // );
+  //           // router.replace(`#/${foundSection.name}/${sectionName}`, undefined, {
+  //           //   shallow: true,
+  //           // });
+  //           const sectionName = Object.keys(foundSection.data).find(
+  //             (key) => key.toLowerCase() === currentSectionId
+  //           );
+  //           const routeName = `${foundSection.name}/${sectionName}`.replace(
+  //             /\s+/g,
+  //             "_"
+  //           ); // Replace spaces with underscore
+  //           router.replace(`#/${routeName}`, undefined, { shallow: true });
+  //         }
+  //       }
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, [router, currentSection]);
 
   return (
     <Box bgGradient="linear(to-b, #101332, #1D225F)" w="full">
@@ -50,12 +122,17 @@ const Layout = () => {
                   <Grid
                     w="100%"
                     key={Component.name}
-                    id={Component.name}
+                    // id={Component.name}
+                    id={Component.name.toLowerCase()}
                     py={{ base: 4, xl: 20 }}
                     gap={{ lg: 8, xl: "", "2xl": "" }}
                     px={{ lg: 10, xl: "20", "2xl": "20", "3xl": "80" }}
                     display="flex"
                     zIndex="-1"
+                    // ref={(el) => (sectionRefs.current[Component.name] = el)}
+                    ref={(el) =>
+                      (sectionRefs.current[Component.name.toLowerCase()] = el)
+                    }
                     // borderBottom="0.8px solid #2B3039"
                   >
                     <Component />
@@ -96,3 +173,41 @@ const Layout = () => {
 };
 
 export default Layout;
+
+// useEffect(() => {
+//   const handleScroll = () => {
+//     const scrollPosition = window.scrollY;
+//     let currentSectionId = null;
+
+//     Object.entries(sectionRefs.current).forEach(([id, ref]) => {
+//       const sectionTop = ref.offsetTop;
+//       const sectionBottom = sectionTop + ref.offsetHeight;
+
+//       if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+//         currentSectionId = id;
+//       }
+//     });
+
+//     if (currentSectionId !== currentSection) {
+//       setCurrentSection(currentSectionId);
+//       // if (currentSectionId) {
+//       //   router.replace(`/#${currentSectionId}`, undefined, { shallow: true });
+//       // }
+//       if (currentSectionId) {
+//         // Check if the current section corresponds to any section in API data
+//         const foundSection = APIData.find(apiSection => {
+//           return Object.keys(apiSection.data).find(key => key.toLowerCase() === currentSectionId);
+//         });
+//          if (foundSection) {
+//           const sectionName = Object.keys(foundSection.data).find(key => key.toLowerCase() === currentSectionId);
+//           router.replace(`/${foundSection.name}/${sectionName}`, undefined, { shallow: true });
+//         }
+//     }
+//   };
+
+//   window.addEventListener("scroll", handleScroll);
+
+//   return () => {
+//     window.removeEventListener("scroll", handleScroll);
+//   };
+// }, [router, currentSection]});

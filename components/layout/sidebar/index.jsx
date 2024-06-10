@@ -64,7 +64,7 @@ const Sidebar = ({ titles, handleClick }) => {
                   <Text
                     key={index}
                     color={color}
-                    fontWeight="600"
+                    fontWeight="500"
                     fontSize={{ lg: "1.05rem" }}
                     textAlign="left"
                   >
@@ -77,6 +77,7 @@ const Sidebar = ({ titles, handleClick }) => {
                 <AccordionPanel>
                   {Object.keys(api.data).map((title, index) => (
                     <Text
+                      fontSize="14"
                       key={index}
                       transition="transform 0.5s ease"
                       cursor="pointer"
@@ -86,13 +87,13 @@ const Sidebar = ({ titles, handleClick }) => {
                         transform: "translateX(2%)",
                       }}
                       onClick={() => {
-                        handleClick(title);
+                        handleClick(api.name, title);
                         setSelectedMenu(title);
                       }}
                       transform={title === selectedMenu && "translateX(2%)"}
                       py="1"
                       color={title === selectedMenu ? color : undefined}
-                      fontWeight={title === selectedMenu ? "700" : "400"}
+                      fontWeight={title === selectedMenu ? "500" : "400"}
                     >
                       <FormattedTitles title={title} />
                     </Text>

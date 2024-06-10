@@ -60,32 +60,6 @@ export default Index;
 //     "expirationDate": "1999-12-31",
 //     "serialNumber": "123456789"
 //   }'
-// 2. UMID SSN Verification
-// Endpoint: POST /v1/verification/philippines/umidssn
-
-// Request:
-
-// json
-// Copy code
-// {
-//   "documentNumber": "0111-2345678-9"
-// }
-// Responses:
-
-// 200 OK: Verification successful.
-// 401 Unauthorized: Invalid or missing access token.
-// Example cURL:
-
-// bash
-// Copy code
-// curl -X 'POST' \
-//   '{{baseUrl}}/v1/verification/philippines/umidssn' \
-//   -H 'accept: application/json' \
-//   -H 'Content-Type: application/json' \
-//   -H 'Authorization: {{accessToken}}' \
-//   -d '{
-//     "documentNumber": "0111-2345678-9"
-//   }'
 // 3. PRC Verification
 // Endpoint: POST /v1/verification/philippines/prc
 

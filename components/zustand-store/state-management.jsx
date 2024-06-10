@@ -2,7 +2,9 @@ import { useRouter } from "next/router";
 import { create } from "zustand";
 
 export const useStateManagementStore = create((set) => ({
-  selectedMenu: "",
+  // selectedMenu: "",
+  // setSelectedMenu: (menu) => set(() => ({ selectedMenu: menu })),
+  selectedMenu: null,
   setSelectedMenu: (menu) => set(() => ({ selectedMenu: menu })),
   currentRoute: "",
   setCurrentRoute: (route) => set(() => ({ currentRoute: route })),
