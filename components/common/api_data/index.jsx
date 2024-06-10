@@ -7,9 +7,9 @@ import API6 from "@/components/data/content/Australia_Verification_Services";
 
 const APIData = [
   { name: "QR Code Verification", data: API1 },
-  { name: " Philippines Verification", data: API2 },
+  { name: "Philippines Verification", data: API2 },
   {
-    name: " Indonesia Verification (Currently Forbidden)",
+    name: "Indonesia Verification (Currently Forbidden)",
     data: API3,
   },
   {
