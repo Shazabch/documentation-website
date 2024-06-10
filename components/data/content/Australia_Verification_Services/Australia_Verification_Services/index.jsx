@@ -1,4 +1,21 @@
-import { GridItem, useBreakpointValue } from "@chakra-ui/react";
+import {
+  GridItem,
+  useBreakpointValue,
+  Code,
+  Heading,
+  Text,
+  useColorModeValue,
+  Box,
+  VStack,
+  IconButton,
+  useClipboard,
+  useColorMode,
+} from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { MdDone, MdOutlineCopyAll } from "react-icons/md";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
+
 import React from "react";
 const Australia_Verification_Services = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
@@ -27,14 +44,6 @@ const Australia_Verification_Services = () => {
 };
 
 export default Australia_Verification_Services;
-
-import {
-  Code,
-  Heading,
-  Text,
-  VStack,
-  useColorModeValue,
-} from "@chakra-ui/react";
 
 const Details = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
@@ -86,19 +95,6 @@ const Details = () => {
     </VStack>
   );
 };
-
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  VStack,
-  IconButton,
-  useClipboard,
-  useColorModeValue,
-  useColorMode,
-} from "@chakra-ui/react";
-import { MdDone, MdOutlineCopyAll } from "react-icons/md";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const Example = () => {
   const jsonCode = ` {
