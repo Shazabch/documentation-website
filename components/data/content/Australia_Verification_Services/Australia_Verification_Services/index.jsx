@@ -10,12 +10,15 @@ const Australia_Verification_Services = () => {
           <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
             <Details />
           </GridItem>
-          <GridItem w={{ base: "", xl: "40vw" }}></GridItem>
+          <GridItem w={{ base: "", xl: "40vw" }}>
+            <Example />
+          </GridItem>
         </>
       ) : (
         <>
           <GridItem w="100%">
             <Details />
+            <Example />
           </GridItem>
         </>
       )}
@@ -39,7 +42,7 @@ const Details = () => {
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-         Australia Verification Services
+        Australia Verification Services
       </Heading>
       <Text>
         This document provides a guide on how to use the API endpoints available
@@ -80,6 +83,409 @@ const Details = () => {
         Authorization: &nbsp;
         <Code>{`{{ accessToken }}`}</Code>&nbsp;
       </Text>
+    </VStack>
+  );
+};
+
+const Example = () => {
+  const jsonCode = ` {
+  {
+  "returnFullDocumentImage": false,
+  "returnFaceImage": false,
+  "returnSignatureImage": false,
+  "allowBlurFilter": false,
+  "allowUnparsedMrzResults": false,
+  "allowUnverifiedMrzResults": true,
+  "validateResultCharacters": true,
+  "anonymizationMode": "FULL_RESULT",
+  "anonymizeImage": true,
+  "ageLimit": 0,
+  "imageSource": "string",
+  "scanCroppedDocumentImage": false
+}
+Parameters
+Name	In	Type	Required	Description
+body	body	DocumentVerificationRequest	true	none
+Responses
+Status	Meaning	Description	Schema
+200	OK	OK	DocumentVerificationResponse
+400	Bad Request	Bad Request	DefaultResponse
+403	Forbidden	Forbidden	DefaultResponse
+500	Internal Server Error	Internal Server Error	DefaultResponse
+503	Service Unavailable	Service Unavailable	DefaultResponse
+504	Gateway Time-out	Gateway Timeout	DefaultResponse
+
+Code Samples
+sh
+Copy code
+# You can also use wget
+curl -X POST https://api.microblink.com/v1/recognizers/document-verification \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -d '{
+    "returnFullDocumentImage": false,
+    "returnFaceImage": false,
+    "returnSignatureImage": false,
+    "allowBlurFilter": false,
+    "allowUnparsedMrzResults": false,
+    "allowUnverifiedMrzResults": true,
+    "validateResultCharacters": true,
+    "anonymizationMode": "FULL_RESULT",
+    "anonymizeImage": true,
+    "ageLimit": 0,
+    "imageSource": "string",
+    "scanCroppedDocumentImage": false
+  }'
+
+  }`;
+
+  const response = `{
+ {
+  "executionId": "string",
+  "finishTime": "string",
+  "startTime": "string",
+  "result": {
+    "dateOfBirth": {
+      "day": 0,
+      "month": 0,
+      "year": 0,
+      "successfullyParsed": true,
+      "originalString": "string"
+    },
+    "classInfo": {
+      "country": "COUNTRY_NONE",
+      "region": "REGION_NONE",
+      "type": "TYPE_NONE",
+      "countryName": "string",
+      "isoAlpha3CountryCode": "string",
+      "isoAlpha2CountryCode": "string",
+      "isoNumericCountryCode": "string"
+    },
+    "type": "string",
+    "isBelowAgeLimit": true,
+    "age": 0,
+    "recognitionStatus": "EMPTY",
+    "firstName": "string",
+    "lastName": "string",
+    "fullName": "string",
+    "address": "string",
+    "dateOfIssue": {
+      "day": 0,
+      "month": 0,
+      "year": 0,
+      "successfullyParsed": true,
+      "originalString": "string"
+    },
+    "dateOfExpiry": {
+      "day": 0,
+      "month": 0,
+      "year": 0,
+      "successfullyParsed": true,
+      "originalString": "string"
+    },
+    "documentNumber": "string",
+    "sex": "string",
+    "driverLicenseDetailedInfo": {
+      "restrictions": "string",
+      "endorsements": "string",
+      "vehicleClass": "string",
+      "conditions": "string",
+      "vehicleClassesInfo": [
+        {
+          "vehicleClass": "string",
+          "licenceType": "string",
+          "effectiveDate": {
+            "day": 0,
+            "month": 0,
+            "year": 0,
+            "successfullyParsed": true,
+            "originalString": "string"
+          },
+          "expiryDate": {
+            "day": 0,
+            "month": 0,
+            "year": 0,
+            "successfullyParsed": true,
+            "originalString": "string"
+          }
+        }
+      ]
+    },
+    "fullDocumentImageBase64": "string",
+    "faceImageBase64": "string",
+    "additionalNameInformation": "string",
+    "additionalAddressInformation": "string",
+    "additionalOptionalAddressInformation": "string",
+    "placeOfBirth": "string",
+    "nationality": "string",
+    "race": "string",
+    "religion": "string",
+    "profession": "string",
+    "maritalStatus": "string",
+    "residentialStatus": "string",
+    "employer": "string",
+    "personalIdNumber": "string",
+    "documentAdditionalNumber": "string",
+    "documentOptionalAdditionalNumber": "string",
+    "issuingAuthority": "string",
+    "mrzData": {
+      "rawMrzString": "string",
+      "documentCode": "string",
+      "issuer": "string",
+      "documentNumber": "string",
+      "opt1": "string",
+      "opt2": "string",
+      "gender": "string",
+      "nationality": "string",
+      "primaryId": "string",
+      "secondaryId": "string",
+      "alienNumber": "string",
+      "applicationReceiptNumber": "string",
+      "immigrantCaseNumber": "string",
+      "mrzVerified": true,
+      "mrzParsed": true,
+      "dateOfBirth": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "dateOfExpiry": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "documentType": "UNKNOWN",
+      "issuerName": "string",
+      "nationalityName": "string"
+    },
+    "conditions": "string",
+    "localizedName": "string",
+    "dateOfExpiryPermanent": true,
+    "additionalPersonalIdNumber": "string",
+    "viz": {
+      "firstName": "string",
+      "lastName": "string",
+      "fullName": "string",
+      "additionalNameInformation": "string",
+      "localizedName": "string",
+      "address": "string",
+      "additionalAddressInformation": "string",
+      "additionalOptionalAddressInformation": "string",
+      "placeOfBirth": "string",
+      "nationality": "string",
+      "race": "string",
+      "religion": "string",
+      "profession": "string",
+      "maritalStatus": "string",
+      "residentialStatus": "string",
+      "employer": "string",
+      "sex": "string",
+      "dateOfBirth": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "dateOfIssue": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "dateOfExpiry": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "dateOfExpiryPermanent": true,
+      "documentNumber": "string",
+      "personalIdNumber": "string",
+      "documentAdditionalNumber": "string",
+      "additionalPersonalIdNumber": "string",
+      "documentOptionalAdditionalNumber": "string",
+      "issuingAuthority": "string",
+      "driverLicenseDetailedInfo": {
+        "restrictions": "string",
+        "endorsements": "string",
+        "vehicleClass": "string",
+        "conditions": "string",
+        "vehicleClassesInfo": [
+          {
+            "vehicleClass": "string",
+            "licenceType": "string",
+            "effectiveDate": {
+              "day": 0,
+              "month": 0,
+              "year": 0,
+              "successfullyParsed": true,
+              "originalString": "string"
+            },
+            "expiryDate": {
+              "day": 0,
+              "month": 0,
+              "year": 0,
+              "successfullyParsed": true,
+              "originalString": "string"
+            }
+          }
+        ]
+      },
+      "conditions": "string",
+      "fathersName": "string",
+      "mothersName": "string"
+    },
+    "barcode": {
+      "rawDataBase64": "string",
+      "stringData": "string",
+      "firstName": "string",
+      "lastName": "string",
+      "middleName": "string",
+      "fullName": "string",
+      "additionalNameInformation": "string",
+      "address": "string",
+      "placeOfBirth": "string",
+      "nationality": "string",
+      "race": "string",
+      "religion": "string",
+      "profession": "string",
+      "maritalStatus": "string",
+      "residentialStatus": "string",
+      "employer": "string",
+      "sex": "string",
+      "dateOfBirth": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "dateOfIssue": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "dateOfExpiry": {
+        "day": 0,
+        "month": 0,
+        "year": 0,
+        "successfullyParsed": true,
+        "originalString": "string"
+      },
+      "documentNumber": "string",
+      "personalIdNumber": "string",
+      "documentAdditionalNumber": "string",
+      "issuingAuthority": "string",
+      "addressDetailedInfo": {
+        "street": "string",
+        "postalCode": "string",
+        "city": "string",
+        "jurisdiction": "string"
+      },
+      "driverLicenseDetailedInfo": {
+        "restrictions": "string",
+        "endorsements": "string",
+        "vehicleClass": "string",
+        "conditions": "string",
+        "vehicleClassesInfo": [
+          {
+            "vehicleClass": "string",
+            "licenceType": "string",
+            "effectiveDate": {
+              "day": 0,
+              "month": 0,
+              "year": 0,
+              "successfullyParsed": true,
+              "originalString": "string"
+            },
+            "expiryDate": {
+              "day": 0,
+              "month": 0,
+              "year": 0,
+              "successfullyParsed": true,
+              "originalString": "string"
+            }
+          }
+        ]
+      },
+      "extendedElements": [
+        {
+          "key": "BARCODE_ELEMENT_KEY_DOCUMENT_TYPE",
+          "value": "string"
+        }
+      ]
+    },
+    "imageAnalysisResult": {
+      "blurred": true,
+      "documentImageColorStatus": "NOT_AVAILABLE",
+      "documentImageMoireStatus": "NOT_AVAILABLE",
+      "faceDetectionStatus": "NOT_AVAILABLE",
+      "mrzDetectionStatus": "NOT_AVAILABLE",
+      "barcodeDetectionStatus": "NOT_AVAILABLE"
+    },
+    "processingStatus": "SUCCESS",
+    "recognitionMode": "NONE",
+    "signatureImageBase64": "string",
+    "fathersName": "string",
+    "mothersName": "string"
+  }
+}
+  }`;
+  const { onCopy, hasCopied } = useClipboard(JSON.stringify(jsonCode, null, 2));
+  const [showTransition, setShowTransition] = useState(false);
+  const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
+  const { colorMode } = useColorMode();
+
+  useEffect(() => {
+    setShowTransition(hasCopied);
+  }, [hasCopied]);
+
+  return (
+    <VStack pos="relative" bgColor={bgColor} borderRadius="lg">
+      <Code>Request:</Code>
+      <SyntaxHighlighter
+        customStyle={{
+          height: "100%",
+          width: "100%",
+          backgroundColor: colorMode == "dark" ? "transparent" : "transparent",
+        }}
+        language="json"
+        style={okaidia}
+        wrapLongLines
+      >
+        {jsonCode}
+      </SyntaxHighlighter>
+      <Code>Responses:</Code>
+      <SyntaxHighlighter
+        customStyle={{
+          height: "100%",
+          width: "100%",
+          backgroundColor: colorMode == "dark" ? "transparent" : "transparent",
+        }}
+        language="json"
+        style={okaidia}
+        wrapLongLines
+      >
+        {response}
+      </SyntaxHighlighter>
+      <Box pos="absolute" top="4" right={{ base: "-4", xl: "2", "2xl": "2" }}>
+        <IconButton
+          onClick={onCopy}
+          aria-label={hasCopied ? "Copied" : "Copy"}
+          icon={hasCopied ? <MdDone /> : <MdOutlineCopyAll />}
+          bgColor="transparent"
+          transition={showTransition ? "all 0.5s ease" : "none"}
+        />
+      </Box>
     </VStack>
   );
 };
