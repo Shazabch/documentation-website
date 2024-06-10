@@ -28,28 +28,28 @@ const SearchModal = ({}) => {
     isOpenSearchModal,
     onCloseSearchModal,
   } = useStateManagementStore();
+  const [search, setSearch] = useState("");
+  const [filteredTitles, setFilteredTitles] = useState([]);
 
-  // iterate over the keys of each data object in apiSection and extract the name of each component.
   const sidebarTitles = APIData.flatMap((apiSection) =>
     Object.keys(apiSection.data).map((key) => apiSection.data[key].name)
   );
 
-  const [search, setSearch] = useState("");
-  const [filteredTitles, setFilteredTitles] = useState();
-
   const handleSearchChange = (e) => {
     setSearch(e.target.value);
   };
-
   useEffect(() => {
     if (selectedMenu) {
-      router.push(`#/${selectedMenu.toLowerCase()}`, undefined, {
-        // router.push(`#/api1/${selectedMenu.toLowerCase()}`, undefined, {
+      const formattedMenu = selectedMenu
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join("_");
 
+      router.push(`#/${formattedMenu}`, undefined, {
         shallow: true,
       });
       document
-        .getElementById(selectedMenu)
+        .getElementById(formattedMenu)
         ?.scrollIntoView({ behavior: "smooth" });
       setSearch("");
     }
@@ -60,9 +60,19 @@ const SearchModal = ({}) => {
       setFilteredTitles([]);
     } else {
       setFilteredTitles(
-        sidebarTitles.filter((title) =>
-          title.toLowerCase().startsWith(search.toLowerCase())
-        )
+        sidebarTitles
+          .filter((title) =>
+            title.toLowerCase().startsWith(search.toLowerCase())
+          )
+          .map((title) =>
+            title
+              .split("_")
+              .map(
+                (word) =>
+                  word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+              )
+              .join(" ")
+          )
       );
     }
   }, [search, sidebarTitles]);
@@ -173,3 +183,80 @@ const SearchModal = ({}) => {
 };
 
 export default SearchModal;
+
+// useEffect(() => {
+//   if (selectedMenu) {
+//     const routeName = selectedMenu.replace(/\s+/g, "_");
+//     router.push(`#/${routeName}`, undefined, {
+//       shallow: true,
+//     });
+//     document
+//       .getElementById(selectedMenu)
+//       ?.scrollIntoView({ behavior: "smooth" });
+//     setSearch("");
+//   }
+// }, [selectedMenu]);
+
+// // const sidebarTitles = APIData.map((section) => section.name);
+
+// useEffect(() => {
+//   if (search.trim() === "") {
+//     setFilteredTitles([]);
+//   } else {
+//     const formattedSearch = search.toLowerCase().replace(/\s+/g, "_");
+//     const filtered = sidebarTitles.filter((title) =>
+//       title.toLowerCase().replace(/\s+/g, "_").startsWith(formattedSearch)
+//     );
+//     setFilteredTitles(filtered.map((title) => title.replace(/_/g, " ")));
+//   }
+// }, [search, sidebarTitles]);
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+// useEffect(() => {
+//   if (search.trim() === "") {
+//     setFilteredTitles([]);
+//   } else {
+//     setFilteredTitles(
+//       sidebarTitles.filter((title) =>
+//         title
+//           .toLowerCase()
+//           .replace(/\s+/g, "_")
+//           .startsWith(search.toLowerCase())
+//           .replace(/\s+/g, "_")
+//       )
+//     );
+//   }
+// }, [search, sidebarTitles]);
+
+// useEffect(() => {
+//   if (search.trim() === "") {
+//     setFilteredTitles([]);
+//   } else {
+//     const formattedSearch = search.toLowerCase().replace(/\s+/g, "_");
+//     const filtered = sidebarTitles.filter((title) =>
+//       title.toLowerCase().replace(/\s+/g, "_").startsWith(formattedSearch)
+//     );
+//     setFilteredTitles(filtered.map((title) => title.replace(/_/g, " ")));
+//     console.log(filteredTitles);
+//   }
+// }, [search, sidebarTitles]);
+
+// useEffect(() => {
+//   if (search.trim() === "") {
+//     setFilteredTitles([]);
+//   } else {
+//     const formattedSearch = search.toLowerCase().replace(/\s+/g, "_");
+//     setFilteredTitles(
+//       sidebarTitles.filter((title) =>
+//         title.toLowerCase().replace(/\s+/g, "_").startsWith(formattedSearch)
+//       )
+//     );
+//     console.log(filteredTitles);
+//   }
+// }, [search, sidebarTitles]);

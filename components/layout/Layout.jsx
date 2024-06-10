@@ -23,23 +23,18 @@ const Layout = () => {
   const sectionRefs = useRef({});
   const [currentSection, setCurrentSection] = useState(null);
   const [isNavigating, setIsNavigating] = useState(false);
-  // const handleNavigation = (id) => {
-  //   // router.push(`#/${id.toLowerCase()}`, undefined, { shallow: true });
-  //   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  // };
-
-
 
   const handleNavigation = (apiName, title) => {
     setIsNavigating(true);
     const foundSection = APIData.find((apiSection) => {
       return apiSection.name.toLowerCase() === apiName.toLowerCase();
     });
-
+    console.log(foundSection);
     if (foundSection) {
       const sectionName = Object.keys(foundSection.data).find(
         (key) => key.toLowerCase() === title.toLowerCase()
       );
+      console.log(sectionName);
       const routeName = `${foundSection.name}/${sectionName}`.replace(
         /\s+/g,
         "_"
@@ -78,6 +73,8 @@ const Layout = () => {
 
         if (currentSectionId !== currentSection) {
           setCurrentSection(currentSectionId);
+          console.log(currentSection);
+          console.log(currentSectionId);
           if (currentSectionId) {
             const foundSection = APIData.find((apiSection) => {
               return Object.keys(apiSection.data).find(
@@ -106,8 +103,6 @@ const Layout = () => {
     }
   }, [router, currentSection, isNavigating]);
 
-  console.log(isNavigating);
-
   return (
     <Box bgGradient="linear(to-b, #101332, #1D225F)" w="full">
       {isDesktop ? (
@@ -120,7 +115,11 @@ const Layout = () => {
           }}
         >
           <GridItem w="full">
-            <Sidebar titles={APIData} handleClick={handleNavigation} />
+            <Sidebar
+              titles={APIData}
+              currentSection={currentSection}
+              handleClick={handleNavigation}
+            />
           </GridItem>
           <GridItem h="full" w="full" bgColor={bgColor}>
             <Navbar />
@@ -158,6 +157,7 @@ const Layout = () => {
             const { data } = apiSection;
             return Object.keys(data).map((key) => {
               const Component = data[key];
+
               return (
                 <Grid
                   onClick={() => setShowMenu(false)}
@@ -228,23 +228,22 @@ export default Layout;
 //   shallow: true,
 // });
 
+// const handleNavigation = (apiName, title) => {
+//   setIsNavigating(true);
+//   const foundSection = APIData.find((apiSection) => {
+//     return apiSection.name.toLowerCase() === apiName.toLowerCase();
+//   });
 
- // const handleNavigation = (apiName, title) => {
-  //   setIsNavigating(true);
-  //   const foundSection = APIData.find((apiSection) => {
-  //     return apiSection.name.toLowerCase() === apiName.toLowerCase();
-  //   });
-
-  //   if (foundSection) {
-  //     const sectionName = Object.keys(foundSection.data).find(
-  //       (key) => key.toLowerCase() === title.toLowerCase()
-  //     );
-  //     const routeName = `${foundSection.name}/${sectionName}`.replace(
-  //       /\s+/g,
-  //       "_"
-  //     );
-  //     router.push(`#/${routeName}`, undefined, { shallow: true });
-  //   }
-  //   document.getElementById(title)?.scrollIntoView({ behavior: "smooth" });
-  //   setIsNavigating(false);
-  // };
+//   if (foundSection) {
+//     const sectionName = Object.keys(foundSection.data).find(
+//       (key) => key.toLowerCase() === title.toLowerCase()
+//     );
+//     const routeName = `${foundSection.name}/${sectionName}`.replace(
+//       /\s+/g,
+//       "_"
+//     );
+//     router.push(`#/${routeName}`, undefined, { shallow: true });
+//   }
+//   document.getElementById(title)?.scrollIntoView({ behavior: "smooth" });
+//   setIsNavigating(false);
+// };

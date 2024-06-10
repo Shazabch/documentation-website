@@ -14,10 +14,14 @@ import {
 import Header from "./Header";
 import { useStateManagementStore } from "@/components/zustand-store/state-management";
 import FormattedTitles from "@/components/utils/FormattedTitles";
-const Sidebar = ({ titles, handleClick }) => {
+const Sidebar = ({ titles, handleClick, currentSection }) => {
   const { selectedMenu, setSelectedMenu } = useStateManagementStore();
   const [isHoverSidebar, setIsHoverSidebar] = useState("");
   const color = useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)");
+
+  console.log(currentSection);
+  const updatedCurrentSection = formatMenu(currentSection);
+  console.log(updatedCurrentSection);
 
   return (
     <VStack
@@ -28,15 +32,6 @@ const Sidebar = ({ titles, handleClick }) => {
       color={useColorModeValue("#121539", "RGBA(255, 255, 255, 0.92)")}
       bg={useColorModeValue("white", "#121539")}
       borderRight="0.8px solid #2B3039"
-      border={{
-        base: "2px solid red",
-        md: "2px solid pink",
-        lg: "2px solid orange",
-        xl: "2px solid blue",
-        "2xl": "2px solid white",
-        "3xl": "2px solid green",
-        "4xl": "2px solid purple",
-      }}
     >
       <Header />
       <Accordion
@@ -90,10 +85,25 @@ const Sidebar = ({ titles, handleClick }) => {
                         handleClick(api.name, title);
                         setSelectedMenu(title);
                       }}
-                      transform={title === selectedMenu && "translateX(2%)"}
+                      transform={
+                        (title === selectedMenu && "translateX(2%)") ||
+                        (title === currentSection && "translateX(2%)")
+                      }
                       py="1"
-                      color={title === selectedMenu ? color : undefined}
-                      fontWeight={title === selectedMenu ? "500" : "400"}
+                      color={
+                        title === selectedMenu
+                          ? color
+                          : undefined || title === currentSection
+                          ? color
+                          : undefined
+                      }
+                      fontWeight={
+                        title === selectedMenu
+                          ? "500"
+                          : "400" || title === currentSection
+                          ? "500"
+                          : "400"
+                      }
                     >
                       <FormattedTitles title={title} />
                     </Text>
@@ -109,3 +119,26 @@ const Sidebar = ({ titles, handleClick }) => {
 };
 
 export default Sidebar;
+
+function formatMenu(menu) {
+  if (menu?.startsWith("qr")) {
+    return (
+      "QR " +
+      menu
+        ?.slice(2)
+        ?.split("_")
+        ?.map(
+          (word) =>
+            word?.charAt(0)?.toUpperCase() + word?.slice(1)?.toLowerCase()
+        )
+        .join(" ")
+    );
+  } else {
+    return menu
+      ?.split("_")
+      ?.map(
+        (word) => word?.charAt(0)?.toUpperCase() + word?.slice(1)?.toLowerCase()
+      )
+      ?.join(" ");
+  }
+}

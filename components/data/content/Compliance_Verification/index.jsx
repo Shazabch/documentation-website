@@ -5,7 +5,7 @@ import Overview from "./Compliance_Verification";
 import Email_Risk_Verification from "./Email_Risk_Verification";
 import Error_Handling from "./Error_Handling";
 
-const API4 = {
+const API3 = {
   Overview,
   AML_Verification,
   Get_AML_PDF,
@@ -14,4 +14,4 @@ const API4 = {
   Error_Handling,
 };
 
-export default API4;
+export default API3;

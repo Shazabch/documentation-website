@@ -12,7 +12,7 @@ import Marriage_Certificate_Verification from "./Marriage Certificate Verificati
 import Medicare_Verification from "./Medicare Verification";
 import Passport_Verification from "./Passport_Verification";
 
-const API6 = {
+const API1 = {
   Overview,
   Passport_Verification,
   Citizenship_Verification,
@@ -28,4 +28,4 @@ const API6 = {
   AEC_Verification,
 };
 
-export default API6;
+export default API1;

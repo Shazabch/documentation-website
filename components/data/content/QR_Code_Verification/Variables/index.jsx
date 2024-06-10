@@ -9,7 +9,12 @@ const Variables = () => {
     <>
       {isDesktop ? (
         <>
-          <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
+          <GridItem
+            h="100%"
+            pos="sticky"
+            top="20"
+            w={{ base: "", xl: "40vw" }}
+          >
             <Textt />
           </GridItem>
           <GridItem w={{ base: "", xl: "40vw" }}>

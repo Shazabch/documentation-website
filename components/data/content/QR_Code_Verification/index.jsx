@@ -8,7 +8,7 @@ import QR_Code_Verification_Valid2 from "./QR_Code_Verification_Valid2";
 import Variables from "./Variables";
 import Events from "./Events";
 
-const API1 = {
+const API4 = {
   Overview,
   Authentication,
   BaseURL,
@@ -20,4 +20,4 @@ const API1 = {
   Events,
 };
 
-export default API1;
+export default API4;

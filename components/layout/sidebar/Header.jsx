@@ -45,7 +45,6 @@ const Header = () => {
         <IconButton
           alignItems="center"
           display="flex"
-          bg="red"
           w="full"
           _hover={{ background: "transparent" }}
           bgColor="transparent"

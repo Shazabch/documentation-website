@@ -7,7 +7,12 @@ const Driving_Liscense_Verification = () => {
     <>
       {isDesktop ? (
         <>
-          <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
+          <GridItem
+            h="100%"
+            pos="sticky"
+            top="20"
+            w={{ base: "", xl: "40vw" }}
+          >
             <Overview />
           </GridItem>
           <GridItem w={{ base: "", xl: "40vw" }}>

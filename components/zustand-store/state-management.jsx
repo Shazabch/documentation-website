@@ -6,6 +6,8 @@ export const useStateManagementStore = create((set) => ({
   // setSelectedMenu: (menu) => set(() => ({ selectedMenu: menu })),
   selectedMenu: null,
   setSelectedMenu: (menu) => set(() => ({ selectedMenu: menu })),
+  currentSection: null,
+  setCurrentSection: (menu) => set(() => ({ currentSection: menu })),
   currentRoute: "",
   setCurrentRoute: (route) => set(() => ({ currentRoute: route })),
   showMenu: false,

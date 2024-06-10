@@ -6,7 +6,7 @@ import NBI_Clearance_Verification from "./NBI_Clearance_Verification";
 import PRC_Verification from "./PRC_Verification";
 import UMID_SSN_Verification from "./UMID_SSN_Verification";
 
-const API2 = {
+const API5 = {
   Overview,
   Driving_Liscense_Verification,
   UMID_SSN_Verification,
@@ -16,4 +16,4 @@ const API2 = {
   Error_Handling,
 };
 
-export default API2;
+export default API5;
