@@ -53,7 +53,7 @@ const SearchModal = ({}) => {
         ?.scrollIntoView({ behavior: "smooth" });
       setSearch("");
     }
-  }, [selectedMenu]);
+  }, [selectedMenu, router]);
 
   useEffect(() => {
     if (search.trim() === "") {
