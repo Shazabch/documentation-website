@@ -97,7 +97,7 @@ curl -X 'GET' \
 
   return (
     <VStack pos="relative" bgColor={bgColor} borderRadius="lg">
-      <Code>Request:</Code>
+      <Code mt="6">Request:</Code>
       <SyntaxHighlighter
         customStyle={{
           height: "100%",

@@ -59,6 +59,7 @@ const Details = () => {
         citizenship, and more. The general setup and request structure are
         explained below, followed by specific endpoint instructions.
         <br />
+        <br />
         <Text fontWeight="600" fontSize="16">
           Common Setup:
         </Text>
@@ -69,13 +70,13 @@ const Details = () => {
         Copy code &nbsp;
         <Code>{`{{ BaseURL }}`}</Code>&nbsp;
         <br />
+        <br />
         <Text fontWeight="600" fontSize="16">
           Authentication
         </Text>
         All requests require an Authorization header with a valid access token:
         <br />
-        css
-        <br /> Copy code
+        Copy code
         <br />
         Authorization: &nbsp;
         <Code>{`{{ accessToken }}`}</Code>&nbsp;
@@ -92,11 +93,12 @@ const Details = () => {
         Authorization: &nbsp;
         <Code>{`{{ accessToken }}`}</Code>&nbsp;
         <br />
+        <br />
         <Text fontWeight="600" fontSize="16">
           Endpoint
         </Text>
         <Code>{` 
-        POST https://api.microblink.com/v1/recognizers/document-verification
+        POST b2b-dev.idmetagroup.com/api/v1/verification/document_verification
         `}</Code>
         <br />
         <br />
@@ -194,7 +196,6 @@ const Details = () => {
 
 const Example = () => {
   const jsonCode = ` {
-  {
   "returnFullDocumentImage": false,
   "returnFaceImage": false,
   "returnSignatureImage": false,
@@ -206,9 +207,7 @@ const Example = () => {
   "anonymizeImage": true,
   "ageLimit": 0,
   "imageSource": "string",
-  "scanCroppedDocumentImage": false
-}
-  
+  "scanCroppedDocumentImage": false  
   }`;
 
   const response = `{
@@ -221,10 +220,7 @@ const Example = () => {
 Using curl:
 
 sh
-curl -X POST https://api.microblink.com/v1/recognizers/document-verification \
-  -H 'Content-Type: application/json' \
-  -H 'Accept: application/json' \
-  -d '{
+curl -X POST /v1/recognizers/document-verification \ -H 'Content-Type: application/json'-H \n'Accept: application/json' -d  \n{
     "returnFullDocumentImage": false,
     "returnFaceImage": false,
     "returnSignatureImage": false,
@@ -237,12 +233,11 @@ curl -X POST https://api.microblink.com/v1/recognizers/document-verification \
     "ageLimit": 0,
     "imageSource": "string",
     "scanCroppedDocumentImage": false
-  }'
+  }
 
-
-#### Sample Response
-
+Sample Response
 json
+
 {
   "executionId": "string",
   "finishTime": "string",
@@ -254,7 +249,7 @@ json
       "year": 0,
       "successfullyParsed": true,
       "originalString": "string"
-    },
+},
     "classInfo": {
       "country": "COUNTRY_NONE",
       "region": "REGION_NONE",
@@ -428,9 +423,7 @@ json
               "day": 0,
               "month": 0,
               "year": 0,
-              "
-
-successfullyParsed": true,
+              "successfullyParsed": true,
               "originalString": "string"
             },
             "expiryDate": {
@@ -543,7 +536,7 @@ successfullyParsed": true,
     "fathersName": "string",
     "mothersName": "string"
   }
-}
+ }
 }`;
   const { onCopy, hasCopied } = useClipboard(JSON.stringify(jsonCode, null, 2));
   const [showTransition, setShowTransition] = useState(false);
@@ -556,7 +549,7 @@ successfullyParsed": true,
 
   return (
     <VStack pos="relative" bgColor={bgColor} borderRadius="lg">
-      <Code>Request:</Code>
+      <Code mt="6">Request:</Code>
       <SyntaxHighlighter
         customStyle={{
           height: "100%",

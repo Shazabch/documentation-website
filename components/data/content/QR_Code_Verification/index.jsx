@@ -1,4 +1,4 @@
-import Overview from "./Overview";
+import Overview from "./QR_Code_Verification";
 import Authentication from "./Authentication";
 import BaseURL from "./BaseURL";
 import Endpoints from "./Endpoints";

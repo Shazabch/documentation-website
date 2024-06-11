@@ -50,7 +50,7 @@ const Details = () => {
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-        Face Compare
+        Birth Certificate Verification
       </Heading>
       <Text w="full">
         Endpoint: &nbsp;
@@ -123,7 +123,7 @@ curl -X 'POST' \
 
   return (
     <VStack pos="relative" bgColor={bgColor} borderRadius="lg">
-      <Code>Request:</Code>
+      <Code mt="6">Request:</Code>
       <SyntaxHighlighter
         customStyle={{
           height: "100%",

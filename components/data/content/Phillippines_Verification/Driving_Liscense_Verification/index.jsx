@@ -7,12 +7,7 @@ const Driving_Liscense_Verification = () => {
     <>
       {isDesktop ? (
         <>
-          <GridItem
-            h="100%"
-            pos="sticky"
-            top="20"
-            w={{ base: "", xl: "40vw" }}
-          >
+          <GridItem h="100%" pos="sticky" top="20" w={{ base: "", xl: "40vw" }}>
             <Overview />
           </GridItem>
           <GridItem w={{ base: "", xl: "40vw" }}>
@@ -99,7 +94,7 @@ const Example = () => {
 
   return (
     <VStack pos="relative" bgColor={bgColor} borderRadius="lg">
-      <Code>Request:</Code>
+      <Code mt="6">Request:</Code>
       <SyntaxHighlighter
         customStyle={{
           height: "100%",

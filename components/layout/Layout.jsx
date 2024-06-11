@@ -160,6 +160,7 @@ const Layout = () => {
 
               return (
                 <Grid
+                  w="100dvw"
                   onClick={() => setShowMenu(false)}
                   key={Component.name}
                   id={Component.name}

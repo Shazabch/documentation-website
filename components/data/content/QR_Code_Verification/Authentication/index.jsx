@@ -8,7 +8,7 @@ const Authentication = ({ id }) => {
     <>
       {isDesktop ? (
         <>
-          <GridItem id={id}>
+          <GridItem id={id} w={{ base: "", xl: "36vw" }}>
             <Textt />
           </GridItem>
           <GridItem></GridItem>
