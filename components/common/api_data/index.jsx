@@ -7,7 +7,7 @@ import API6 from "@/components/data/content/Indonesia_Verification_Currently_For
 
 const APIData = [
   {
-    name: "Australia Verification Services",
+    name: "Documents Verification Services",
     data: API1,
   },
   {

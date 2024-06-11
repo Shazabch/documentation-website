@@ -51,7 +51,7 @@ const Details = () => {
   return (
     <VStack textAlign="left" bgColor={bgColor} p="4" rounded="lg">
       <Heading fontSize="24" w="full">
-        Australia Verification Services
+        Document Verification Services
       </Heading>
       <Text>
         This document provides a guide on how to use the API endpoints available
