@@ -155,7 +155,7 @@ const Details = () => {
             -*anonymizationMode* <Code>(string)</Code>
           </Text>
           : Specifies the mode for anonymization. Set to
-          <Code>"FULL_RESULT"</Code>for full result anonymization.
+          <Code>&quot;FULL_RESULT&quot;</Code>for full result anonymization.
         </Text>
         <br />
         <Text>
