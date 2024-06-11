@@ -17,7 +17,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 import React from "react";
-const Australia_Verification_Services = () => {
+const Document_Verification = () => {
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
   return (
@@ -43,7 +43,7 @@ const Australia_Verification_Services = () => {
   );
 };
 
-export default Australia_Verification_Services;
+export default Document_Verification;
 
 const Details = () => {
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");

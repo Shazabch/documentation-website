@@ -1,6 +1,6 @@
 import AEC_Verification from "./AEC Verification";
 import Asic_Msic_Verification from "./Asic Msic Verification";
-import Overview from "./Australia_Verification_Services";
+import Document_Verification from "./Document_Verification";
 import Birth_Certificate_Verification from "./Birth_Certificate_Verification";
 import Centrelink_Card_Verification from "./Centrelink Card Verification";
 import Change_of_Name_Certificate_Verification from "./Change of Name Certificate Verification";
@@ -13,7 +13,7 @@ import Medicare_Verification from "./Medicare Verification";
 import Passport_Verification from "./Passport_Verification";
 
 const API1 = {
-  Overview,
+  Document_Verification,
   Passport_Verification,
   Citizenship_Verification,
   Immigration_Verification,
