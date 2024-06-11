@@ -91,6 +91,102 @@ const Details = () => {
         <br />
         Authorization: &nbsp;
         <Code>{`{{ accessToken }}`}</Code>&nbsp;
+        <br />
+        <Text fontWeight="600" fontSize="16">
+          Endpoint
+        </Text>
+        <Code>{` 
+        POST https://api.microblink.com/v1/recognizers/document-verification
+        `}</Code>
+        <br />
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*returnFullDocumentImage* <Code>(boolean)</Code>
+          </Text>
+          : Indicates whether to return the full document image.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*returnFaceImage* <Code>(boolean)</Code>
+          </Text>
+          : Indicates whether to return the face image from the document.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*returnSignatureImage* <Code>(boolean)</Code>
+          </Text>
+          : Indicates whether to return the signature image from the document.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*allowBlurFilter* <Code>(boolean)</Code>
+          </Text>
+          : Allows the use of a blur filter during image processing. Indicates
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*allowUnparsedMrzResults* <Code>(boolean)</Code>
+          </Text>
+          : Allows returning results even if MRZ (Machine Readable Zone) parsing
+          fails.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*allowUnverifiedMrzResults* <Code>(boolean)</Code>
+          </Text>
+          : Allows returning MRZ results without verification.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*validateResultCharacters* <Code>(boolean)</Code>
+          </Text>
+          : Validates characters in the parsed results.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*anonymizationMode* <Code>(string)</Code>
+          </Text>
+          : Specifies the mode for anonymization. Set to
+          <Code>"FULL_RESULT"</Code>for full result anonymization.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*anonymizeImage* <Code>(boolean)</Code>
+          </Text>
+          :Indicates whether to anonymize the image. Specifies the mode for
+          anonymization.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*ageLimit* <Code>(integer)</Code>
+          </Text>
+          :Sets the age limit for document verification.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*imageSource* <Code>(string)</Code>
+          </Text>
+          :The source of the image being processed.
+        </Text>
+        <br />
+        <Text>
+          <Text as="span" fontWeight={600}>
+            -*scanCroppedDocumentImage* <Code>(string)</Code>
+          </Text>
+          :Indicates whether to scan the cropped document image.
+        </Text>
+        <br />
       </Text>
     </VStack>
   );
@@ -112,22 +208,19 @@ const Example = () => {
   "imageSource": "string",
   "scanCroppedDocumentImage": false
 }
-Parameters
-Name	In	Type	Required	Description
-body	body	DocumentVerificationRequest	true	none
-Responses
-Status	Meaning	Description	Schema
-200	OK	OK	DocumentVerificationResponse
-400	Bad Request	Bad Request	DefaultResponse
-403	Forbidden	Forbidden	DefaultResponse
-500	Internal Server Error	Internal Server Error	DefaultResponse
-503	Service Unavailable	Service Unavailable	DefaultResponse
-504	Gateway Time-out	Gateway Timeout	DefaultResponse
+  
+  }`;
 
-Code Samples
+  const response = `{
+- *200 OK*: The request was successful, and the response contains the document verification results.
+- *400 Bad Request*: The request was invalid.
+- *403 Forbidden*: Access to the resource is forbidden.
+- *500 Internal Server Error*: The server encountered an error processing the request.
+- *503 Service Unavailable*: The service is temporarily unavailable.
+- *504 Gateway Time-out*: The gateway timed out while processing the request.
+Using curl:
+
 sh
-Copy code
-# You can also use wget
 curl -X POST https://api.microblink.com/v1/recognizers/document-verification \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
@@ -146,10 +239,11 @@ curl -X POST https://api.microblink.com/v1/recognizers/document-verification \
     "scanCroppedDocumentImage": false
   }'
 
-  }`;
 
-  const response = `{
- {
+#### Sample Response
+
+json
+{
   "executionId": "string",
   "finishTime": "string",
   "startTime": "string",
@@ -334,7 +428,9 @@ curl -X POST https://api.microblink.com/v1/recognizers/document-verification \
               "day": 0,
               "month": 0,
               "year": 0,
-              "successfullyParsed": true,
+              "
+
+successfullyParsed": true,
               "originalString": "string"
             },
             "expiryDate": {
@@ -448,7 +544,7 @@ curl -X POST https://api.microblink.com/v1/recognizers/document-verification \
     "mothersName": "string"
   }
 }
-  }`;
+}`;
   const { onCopy, hasCopied } = useClipboard(JSON.stringify(jsonCode, null, 2));
   const [showTransition, setShowTransition] = useState(false);
   const bgColor = useColorModeValue("gray.50", "whiteAlpha.200");
