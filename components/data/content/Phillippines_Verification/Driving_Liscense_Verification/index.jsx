@@ -73,7 +73,7 @@ const Example = () => {
  bash
  Copy code
  curl -X 'POST' \
-   '{{baseUrl}}/v1/verification/philippines/drivinglicense' \
+   'b2b-dev.idmetagroup.com/api/v1/verification/philippines/drivinglicense' \
    -H 'accept: application/json' \
    -H 'Content-Type: application/json' \
    -H 'Authorization: {{accessToken}}' \

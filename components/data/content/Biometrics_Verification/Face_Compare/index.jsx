@@ -85,7 +85,7 @@ Example cURL:
 bash
 Copy code
 curl -X 'POST' \
-  '{{baseUrl}}/v1/verification/biometricsfacecompare' \
+  'b2b-dev.idmetagroup.com/api/v1/verification/biometricsfacecompare' \
   -H 'accept: application/json' \
   -H 'Authorization: {{accessToken}}' \
   -F 'image1=@/path/to/your/image1.jpg;type=image/jpeg' \

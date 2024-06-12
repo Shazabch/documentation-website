@@ -86,7 +86,7 @@ Example cURL:
 bash
 Copy code
 curl -X 'POST' \
-  '{{baseUrl}}/v1/verification/dukcapilfacematch' \
+  'b2b-dev.idmetagroup.com/api/v1/verification/dukcapilfacematch' \
   -H 'accept: application/json' \
   -H 'Authorization: {{accessToken}}' \
   -F 'date_of_birth=1999-12-31' \

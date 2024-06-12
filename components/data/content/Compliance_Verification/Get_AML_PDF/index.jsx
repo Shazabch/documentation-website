@@ -81,7 +81,7 @@ Example cURL:
 bash
 Copy code
 curl -X 'GET' \
-  '{{baseUrl}}/v1/verification/aml/{{pdfResultId}}' \
+  'b2b-dev.idmetagroup.com/api/v1/verification/aml/{{pdfResultId}}' \
   -H 'Accept: application/pdf' \
   -H 'Authorization: {{accessToken}}'
   }`;

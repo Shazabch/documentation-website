@@ -99,7 +99,7 @@ Example cURL:
 bash
 Copy code
 curl -X 'POST' \
-  '{{baseUrl}}/v1/verification/aml' \
+  'b2b-dev.idmetagroup.com/api/v1/verification/aml' \
   -H 'Accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: {{accessToken}}' \

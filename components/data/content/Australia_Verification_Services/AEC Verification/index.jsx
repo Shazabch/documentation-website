@@ -99,12 +99,12 @@ Example cURL:
 
 bash
 Copy code
-curl -X 'POST' \
-  '{{baseUrl}}/v1/verification/australia/aec' \
+curl -X 'POST':
+\'b2b-dev.idmetagroup.com/api/v1/verification/australia/aec' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: {{accessToken}}' \
-  -d '{
+  \n-d '{
         "dob": "1990-02-12",
         "state": 1,
         "postcode": 1233,
