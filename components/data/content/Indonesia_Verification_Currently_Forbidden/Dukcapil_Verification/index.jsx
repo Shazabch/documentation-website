@@ -73,7 +73,7 @@ No response example is provided in the collection.
 Example cURL:
 
 bash
-Copy code
+ 
 curl -X 'POST' \
   'b2b-dev.idmetagroup.com/api/v1/verification/dukcapil' \
   -H 'accept: application/json' \

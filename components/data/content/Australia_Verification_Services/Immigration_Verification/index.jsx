@@ -64,16 +64,12 @@ const Details = () => {
 const Example = () => {
   const jsonCode = `{
 Header:
-json
-Copy code
 {
   "accept": "application/json",
   "Content-Type": "application/json",
   "Authorization": "{{accessToken}}"
 }
 Body (raw JSON):
-json
-Copy code
 {
   "dob": "1989-12-08",
   "family_name": "JONES",
@@ -88,7 +84,7 @@ Copy code
 Example cURL:
 
 bash
-Copy code
+ 
 curl -X 'POST' \
   'b2b-dev.idmetagroup.com/api/v1/verification/australia/immigration' \
   -H 'accept: application/json' \

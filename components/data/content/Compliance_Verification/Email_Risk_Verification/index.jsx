@@ -64,7 +64,7 @@ const Details = () => {
 const Example = () => {
   const jsonCode = `{
 json
-Copy code
+ 
 {
   "recipient": "user@app.com"
 }
@@ -76,7 +76,7 @@ Copy code
 Example cURL:
 
 bash
-Copy code
+ 
 curl -X 'POST' \
   'b2b-dev.idmetagroup.com/api/v1/verification/emailrisk' \
   -H 'Accept: application/json' \

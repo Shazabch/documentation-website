@@ -75,7 +75,7 @@ const Example = () => {
 Example cURL:
 
 bash
-Copy code
+ 
 curl -X 'POST' \
   'b2b-dev.idmetagroup.com/api/v1/verification/philippines/nbiclearance' \
   -H 'accept: application/json' \

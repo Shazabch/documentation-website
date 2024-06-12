@@ -72,7 +72,7 @@ selfie_image: A file with content type image/jpeg.
 Example Form-data:
 
 vbnet
-Copy code
+ 
 date_of_birth: 1999-12-31
 name: String
 nik: 317
@@ -84,7 +84,7 @@ No response example is provided in the collection.
 Example cURL:
 
 bash
-Copy code
+ 
 curl -X 'POST' \
   'b2b-dev.idmetagroup.com/api/v1/verification/dukcapilfacematch' \
   -H 'accept: application/json' \

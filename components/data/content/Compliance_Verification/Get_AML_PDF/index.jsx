@@ -68,7 +68,7 @@ No request body required.
 Headers:
 
 makefile
-Copy code
+ 
 Accept: application/pdf
 Authorization: {{accessToken}}
 
@@ -79,7 +79,7 @@ Authorization: {{accessToken}}
 Example cURL:
 
 bash
-Copy code
+ 
 curl -X 'GET' \
   'b2b-dev.idmetagroup.com/api/v1/verification/aml/{{pdfResultId}}' \
   -H 'Accept: application/pdf' \

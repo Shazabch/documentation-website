@@ -71,7 +71,7 @@ const Example = () => {
  401 Unauthorized: Invalid or missing access token.
  Example cURL:
  bash
- Copy code
+  
  curl -X 'POST' \
    'b2b-dev.idmetagroup.com/api/v1/verification/philippines/drivinglicense' \
    -H 'accept: application/json' \

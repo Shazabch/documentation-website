@@ -55,7 +55,6 @@ const Details = () => {
         <br />
         All API requests should be made to the following base URL:
         <br />
-        Copy code &nbsp;
         <Code>{`b2b-dev.idmetagroup.com/api`}</Code>&nbsp;
         <br />
         <Text fontWeight="600" fontSize="16">
@@ -64,7 +63,7 @@ const Details = () => {
         All requests require an Authorization header with a valid access token:
         <br />
         css
-        <br /> Copy code
+        <br />
         <br />
         Authorization: &nbsp;
         <Code>{`{{ accessToken }}`}</Code>&nbsp;
@@ -74,7 +73,6 @@ const Details = () => {
         <br />
         makefile
         <br />
-        Copy code
         <br /> accept: application/json
         <br /> Content-Type: application/json
         <br />

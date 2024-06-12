@@ -63,8 +63,7 @@ const Details = () => {
 
 const Example = () => {
   const jsonCode = `{
-  json
-Copy code
+ 
 {
   "countries": [
     "ID",
@@ -81,8 +80,7 @@ Copy code
 
   const response = `{
   200 OK:
-json
-Copy code
+ 
 {
   "status": true,
   "message": "OK",
@@ -97,7 +95,7 @@ Copy code
 Example cURL:
 
 bash
-Copy code
+ 
 curl -X 'POST' \
   'b2b-dev.idmetagroup.com/api/v1/verification/aml' \
   -H 'Accept: application/json' \
