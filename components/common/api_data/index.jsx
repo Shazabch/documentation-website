@@ -4,8 +4,12 @@ import API3 from "@/components/data/content/Compliance_Verification";
 import API4 from "@/components/data/content/QR_Code_Verification";
 import API5 from "@/components/data/content/Phillippines_Verification";
 import API6 from "@/components/data/content/Indonesia_Verification_Currently_Forbidden";
-
+import API7 from "@/components/data/content/Getting_Started";
 const APIData = [
+  {
+    name: "Getting Started",
+    data: API7,
+  },
   {
     name: "Documents Verification Services",
     data: API1,
